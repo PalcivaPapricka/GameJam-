@@ -6,17 +6,18 @@ public class EnemyControll : MonoBehaviour
     public EnemyData enemyData;
     private EnemyMove em;
 
-    public GameObject bomber;
+    private GameObject bomber;
 
     private float currentHealth;
     private Rigidbody2D rb;
 
     private void Start()
     {
-        em = FindObjectOfType<EnemyMove>();
+        EnemyMove em = FindObjectOfType<EnemyMove>();
+        em = GetComponent<EnemyMove>();
         enemyData = FindObjectOfType<EnemyData>();
 
-        bomber = GameObject.FindWithTag(enemyData.enemyName);
+        bomber = GameObject.FindWithTag("bomber");
 
         rb = GetComponent<Rigidbody2D>();
         InitializeEnemy();
@@ -37,16 +38,19 @@ public class EnemyControll : MonoBehaviour
     {
         // Sample movement code (could use AI pathfinding or other logic)
         Patrol();
-        if (bomber != null)
-        {
-            em.StraightMove();
-            em.RandomShoot();
-        }
+        //enemyData.Tudu();
+        
     }
 
     private void Patrol()
     {
         // Simple patrol movement (for example, left-right movement)
+        if (bomber != null)
+        {
+            Debug.Log("idem nejdem");
+            em.StraightMove();
+            //em.RandomShoot();
+        }
     }
 
     public void TakeDamage(float amount)
