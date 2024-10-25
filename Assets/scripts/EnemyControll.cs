@@ -1,15 +1,24 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyController : MonoBehaviour
+public class EnemyControll : MonoBehaviour
 {
     public EnemyData enemyData;
+    private EnemyMove em;
+
+    private GameObject bomber;
 
     private float currentHealth;
     private Rigidbody2D rb;
 
     private void Start()
     {
+        EnemyMove em = FindObjectOfType<EnemyMove>();
+        em = GetComponent<EnemyMove>();
+        enemyData = FindObjectOfType<EnemyData>();
+
+        bomber = GameObject.FindWithTag("bomber");
+
         rb = GetComponent<Rigidbody2D>();
         InitializeEnemy();
     }
@@ -29,12 +38,19 @@ public class EnemyController : MonoBehaviour
     {
         // Sample movement code (could use AI pathfinding or other logic)
         Patrol();
+        //enemyData.Tudu();
+        
     }
 
     private void Patrol()
     {
         // Simple patrol movement (for example, left-right movement)
-        rb.linearVelocity = new Vector2(enemyData.speed, rb.linearVelocity.y);
+        if (bomber != null)
+        {
+            Debug.Log("idem nejdem");
+            em.StraightMove();
+            //em.RandomShoot();
+        }
     }
 
     public void TakeDamage(float amount)

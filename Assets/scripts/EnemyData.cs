@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Enemy Data", menuName = "Enemy/Enemy Data")]
 public class EnemyData : ScriptableObject
 {
     public string enemyName;
@@ -8,4 +7,10 @@ public class EnemyData : ScriptableObject
     public float speed;
     public float damage;
     public float detectionRange;
+
+    public void Tudu()
+    {
+        Debug.Log("TUDUUUUUU");
+    }
+
 }

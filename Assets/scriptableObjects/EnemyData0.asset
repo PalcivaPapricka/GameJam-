@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822e951b59ad7f34d98ef41d5e0a1b9a, type: 3}
-  m_Name: EnemyData
+  m_Name: EnemyData0
   m_EditorClassIdentifier: 
   enemyName: bomber
   health: 100
