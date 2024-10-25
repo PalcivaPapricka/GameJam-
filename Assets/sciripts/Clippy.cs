@@ -114,7 +114,7 @@ public class Clippy : MonoBehaviour
             arrow_fired.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
             // Destroy the projectile after 120 seconds
-            Destroy(arrow_fired, 120f);
+            Destroy(arrow_fired, 20f);
 
             // Wait for 0.5 seconds before shooting again
             yield return new WaitForSeconds(0.3f);
