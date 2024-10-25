@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5452136289176441899}
   - component: {fileID: 5840769672839585037}
   - component: {fileID: 6367983197420505174}
+  - component: {fileID: -7363210920006473818}
   m_Layer: 0
   m_Name: enemy
   m_TagString: bomber
@@ -129,3 +130,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: f70853301fcb29140a7f707a1643e686, type: 2}
+--- !u!114 &-7363210920006473818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440401436086477086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1fb58f0f9b93ca458b6d69877fd4a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

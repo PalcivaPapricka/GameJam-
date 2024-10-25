@@ -23,9 +23,10 @@ public class GameMaster : MonoBehaviour
     {
         if (bomber != null)
         {
-            em.PlayerShoot();
+            bomber.GetComponent<EnemyMove>().PlayerShoot();
         }
     }
 
     
 }
+

@@ -46,13 +46,8 @@ public class EnemyControll : MonoBehaviour
         // Simple patrol movement (for example, left-right movement)
         if (bomber != null)
         {
-            Debug.Log("ide to potialto");
             //em.StraightMove();
             //em.RandomShoot();
-        }
-        if(crepper != null)
-        {
-            //em.ZigZagMove();
         }
     }
 
