@@ -16,6 +16,16 @@ public class Clippy : MonoBehaviour
     private float currentDashTime;
     private bool canDash = true;
 
+    public bool is_sprinting=false;
+    public bool rollcounter;
+    public int dmgtaken=0;
+    private bool cantakedmg=true;
+    private int damage_value;
+
+    private scrip stamina_bar ;
+    [SerializeField] GameObject Stamina;
+    scrip stm ;
+
     // Shooting attributes
     [SerializeField] GameObject fireball; // Fireball prefab
     public float speedarr = 15f; // Speed of the fireball
@@ -28,6 +38,7 @@ public class Clippy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         speed = 6f; // Set initial speed
+        stm = Stamina.GetComponent<scrip>();
     }
 
     void Update()
@@ -50,7 +61,8 @@ public class Clippy : MonoBehaviour
 
     private void GetRoll()
     {
-        if (canDash && Input.GetKeyDown(KeyCode.Space))
+        Debug.Log(stm.player_stamina);
+        if (canDash && Input.GetKeyDown(KeyCode.Space) && stm.player_stamina>20f)
         {
             Vector2 direction = new Vector2(dirX, dirY).normalized; // Normalize direction based on input
 
@@ -76,6 +88,7 @@ public class Clippy : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero; // Stop dashing
         canDash = true;
+        rollcounter=true;
     }
 
     private void GetMovement()
@@ -85,13 +98,15 @@ public class Clippy : MonoBehaviour
         dirY = Input.GetAxisRaw("Vertical");
         
         // Sprinting logic
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && stm.player_stamina>0f)
         {
             speed = 10f; // Sprint speed
+            is_sprinting=true;
         }
         else
         {
             speed = 6f; // Normal speed
+            is_sprinting=false;
         }
 
         rb.linearVelocity = new Vector2(dirX * speed, dirY * speed); // Set movement velocity
