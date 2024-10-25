@@ -22,9 +22,7 @@ public class EnemyControll : MonoBehaviour
         arrow = GameObject.FindWithTag("arrow");
 
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log(currentHealth + "1");
         currentHealth = enemyData.health;
-        Debug.Log(currentHealth + "2");
         InitializeEnemy();
     }
 
@@ -72,7 +70,6 @@ public class EnemyControll : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Die();

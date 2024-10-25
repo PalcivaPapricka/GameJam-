@@ -5,11 +5,16 @@ public class EnemyMove : MonoBehaviour
 
     private GameObject player;
     private Transform positionPl;
-    public float followSpeed = 0.5f;
+    [SerializeField]
+    private float followSpeed;
     public Vector3 offset;
+    private Vector3 direction = Vector3.up;
+    private Rigidbody2D rb;
 
     public void Start()
     {
+
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -35,8 +40,10 @@ public class EnemyMove : MonoBehaviour
     {
         if (positionPl != null)
         {
-            Vector3 targetPosition = positionPl.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+            rb.linearVelocity = Vector3.zero;
+            transform.position = Vector2.MoveTowards(transform.position, positionPl.position, followSpeed * Time.deltaTime * 5);
+            direction.x = 0;
+            direction.y = 0;
         }
         
         

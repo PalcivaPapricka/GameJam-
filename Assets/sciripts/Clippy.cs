@@ -61,7 +61,7 @@ public class Clippy : MonoBehaviour
 
     private void GetRoll()
     {
-        Debug.Log(stm.player_stamina);
+        
         if (canDash && Input.GetKeyDown(KeyCode.Space) && stm.player_stamina>20f)
         {
             Vector2 direction = new Vector2(dirX, dirY).normalized; // Normalize direction based on input
