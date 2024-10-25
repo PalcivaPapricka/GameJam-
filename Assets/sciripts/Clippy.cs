@@ -41,7 +41,7 @@ public class Clippy : MonoBehaviour
             shootingCoroutine = StartCoroutine(ShootFireball());
         }
 
-        if (Input.GetMouseButtonUp(1) && shootingCoroutine != null)
+        if (Input.GetMouseButtonUp(1) && shootingCoroutine != null )
         {
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
@@ -101,6 +101,8 @@ public class Clippy : MonoBehaviour
     {
         while (true) // Run indefinitely until stopped
         {
+            if(canDash!=false)
+            {
             Vector3 shootDirection = Input.mousePosition;
             shootDirection.z = 0.0f;
             shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
@@ -118,6 +120,8 @@ public class Clippy : MonoBehaviour
 
             // Wait for 0.5 seconds before shooting again
             yield return new WaitForSeconds(0.3f);
+            }
+             yield return new WaitForSeconds(0.3f);
         }
     }
 }
