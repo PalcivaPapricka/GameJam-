@@ -11,7 +11,6 @@ public class GameMaster : MonoBehaviour
     public void Start()
     {
 
-        em = FindObjectOfType<EnemyMove>();
 
         //bomber = GameObject.FindWithTag("bomber");
 
@@ -23,7 +22,7 @@ public class GameMaster : MonoBehaviour
     {
         if (bomber != null)
         {
-            bomber.GetComponent<EnemyMove>().PlayerShoot();
+            bomber.GetComponent<EnemyMove>().StraightMove();
         }
     }
 

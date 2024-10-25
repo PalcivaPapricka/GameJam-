@@ -7,18 +7,24 @@ public class EnemyControll : MonoBehaviour
     private EnemyMove em;
 
     private GameObject bomber;
+    private GameObject arrow;
 
-    private float currentHealth;
+    private int currentHealth;
     private Rigidbody2D rb;
 
     private void Start()
     {
+        
         em = FindObjectOfType<EnemyMove>();
-        enemyData = FindObjectOfType<EnemyData>();
+       
 
         bomber = GameObject.FindWithTag("bomber");
+        arrow = GameObject.FindWithTag("arrow");
 
         rb = GetComponent<Rigidbody2D>();
+        Debug.Log(currentHealth + "1");
+        currentHealth = enemyData.health;
+        Debug.Log(currentHealth + "2");
         InitializeEnemy();
     }
 
@@ -30,15 +36,27 @@ public class EnemyControll : MonoBehaviour
             return;
         }
 
-        currentHealth = enemyData.health;
+        
+        
     }
 
     private void Update()
     {
         // Sample movement code (could use AI pathfinding or other logic)
         Patrol();
-        //enemyData.Tudu();
+
         
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "arrow")
+        {
+            TakeDamage(20);
+            
+
+        }
     }
 
     private void Patrol()
@@ -51,9 +69,10 @@ public class EnemyControll : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
