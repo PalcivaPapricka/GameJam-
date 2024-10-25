@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class EnemyData : ScriptableObject
 {
     public string enemyName;
-    public float health;
+    public int health;
     public float speed;
-    public float damage;
+    public int damage;
     public float detectionRange;
 
     public void Tudu()
