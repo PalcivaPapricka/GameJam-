@@ -22,6 +22,7 @@ public class EnemyMove : MonoBehaviour
     public void RandomShoot()
     {
         //spravit random utok 
+        Debug.Log("enemy striela random");
     }
 
     public void AroundSelfShoot()

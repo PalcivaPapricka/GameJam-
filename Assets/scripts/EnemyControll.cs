@@ -13,8 +13,7 @@ public class EnemyControll : MonoBehaviour
 
     private void Start()
     {
-        EnemyMove em = FindObjectOfType<EnemyMove>();
-        em = GetComponent<EnemyMove>();
+        em = FindObjectOfType<EnemyMove>();
         enemyData = FindObjectOfType<EnemyData>();
 
         bomber = GameObject.FindWithTag("bomber");
@@ -47,9 +46,13 @@ public class EnemyControll : MonoBehaviour
         // Simple patrol movement (for example, left-right movement)
         if (bomber != null)
         {
-            Debug.Log("idem nejdem");
-            em.StraightMove();
+            Debug.Log("ide to potialto");
+            //em.StraightMove();
             //em.RandomShoot();
+        }
+        if(crepper != null)
+        {
+            //em.ZigZagMove();
         }
     }
 
