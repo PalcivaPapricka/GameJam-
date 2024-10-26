@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyControll : MonoBehaviour
@@ -14,6 +15,11 @@ public class EnemyControll : MonoBehaviour
 
      private Animator anim;
 
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    public float flashDuration = 0.1f; // Duration of the red flash
+
     private void Start()
     {
         
@@ -28,6 +34,8 @@ public class EnemyControll : MonoBehaviour
         InitializeEnemy();
 
         anim=GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     private void InitializeEnemy()
@@ -73,6 +81,7 @@ public class EnemyControll : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        StartCoroutine(FlashRed());
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -92,5 +101,18 @@ public class EnemyControll : MonoBehaviour
         // Visualize detection range
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyData.detectionRange);
+    }
+
+
+    private IEnumerator FlashRed()
+    {
+        // Set color to red
+        spriteRenderer.color = Color.red;
+
+        // Wait for the flash duration
+        yield return new WaitForSeconds(flashDuration);
+
+        // Revert to original color
+        spriteRenderer.color = originalColor;
     }
 }
