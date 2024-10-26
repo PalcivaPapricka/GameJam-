@@ -65,12 +65,12 @@ public class EnemyMove : MonoBehaviour
             if (angle > 90 || angle < -90)
             {
                 // Flip the enemy sprite instead of rotating upside down
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-2, 2, 2);
                 angle += 180; // Adjust the angle by 180 degrees
             }
             else
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(2, 2, 2);
             }
 
             // Apply rotation to face the player
