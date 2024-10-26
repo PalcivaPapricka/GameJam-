@@ -165,9 +165,13 @@ public class EnemyControll : MonoBehaviour
     private void Patrol()
     {
         // Simple patrol movement (for example, left-right movement)
-        if (bomber != null)
+        if (this.tag == "bomber")
         {
             em.StraightMove();
+        }
+        if(this.tag == "brain")
+        {
+            em.keepDistance();
         }
     }
 
