@@ -28,9 +28,12 @@ public class EnemyControll : MonoBehaviour
     private Color originalColor;
     public float flashDuration = 0.1f; // Duration of the red flash
 
+
     private void Start()
     { 
         em = GetComponent<EnemyMove>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         bomber = this.gameObject;
         arrow = GameObject.FindWithTag("arrow");
@@ -130,6 +133,7 @@ public class EnemyControll : MonoBehaviour
             {
                 // Play the particle effect
                 particleEffect.Play();
+                spriteRenderer.enabled = false;
             }
 
             Die(); // Call the Die method to perform the explosion
