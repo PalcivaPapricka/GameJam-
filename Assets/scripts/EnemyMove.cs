@@ -57,9 +57,23 @@ public class EnemyMove : MonoBehaviour
         {
             // Calculate the direction vector from the enemy to the player
             Vector2 directionToPlayer = (positionPl.position - transform.position).normalized;
+
             // Calculate the angle in degrees
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-            // Rotate the enemy to face the player
+
+            // Constrain the rotation so it doesn’t flip upside down
+            if (angle > 90 || angle < -90)
+            {
+                // Flip the enemy sprite instead of rotating upside down
+                transform.localScale = new Vector3(-1, 1, 1);
+                angle += 180; // Adjust the angle by 180 degrees
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            // Apply rotation to face the player
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
