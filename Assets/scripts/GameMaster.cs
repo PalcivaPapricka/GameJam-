@@ -21,11 +21,17 @@ public class GameMaster : MonoBehaviour
 
     public void Start()
     {
-        gameOver = GameObject.FindWithTag("gameoverUI");
-        gameOver.SetActive(false);
-        GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
+        //spawning enemies
         generate_spawns();
         StartCoroutine(SpawnEnemiesInterval());
+
+        //disable gameover UI 
+        gameOver = GameObject.FindWithTag("gameoverUI");
+        gameOver.SetActive(false);
+
+        //Spawn player
+        GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
+        
     }
 
     private IEnumerator SpawnEnemiesInterval()
