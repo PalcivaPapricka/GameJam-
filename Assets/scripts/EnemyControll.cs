@@ -12,6 +12,8 @@ public class EnemyControll : MonoBehaviour
     private int currentHealth;
     private Rigidbody2D rb;
 
+     private Animator anim;
+
     private void Start()
     {
         
@@ -24,6 +26,8 @@ public class EnemyControll : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentHealth = enemyData.health;
         InitializeEnemy();
+
+        anim=GetComponent<Animator>();
     }
 
     private void InitializeEnemy()
@@ -72,6 +76,7 @@ public class EnemyControll : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
+            anim.SetBool("death",true);
             Die();
         }
     }
@@ -79,8 +84,8 @@ public class EnemyControll : MonoBehaviour
     private void Die()
     {
         // Destroy enemy and add effects or animations if needed
-        Destroy(gameObject);
-    }
+        Destroy(gameObject,0.3f);
+    }   
 
     private void OnDrawGizmosSelected()
     {
