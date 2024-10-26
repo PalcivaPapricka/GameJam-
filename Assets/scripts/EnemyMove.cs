@@ -31,6 +31,7 @@ public class EnemyMove : MonoBehaviour
     public void Update()
     {
         FacePlayer();
+
     }
 
     public void ZigZagMove()

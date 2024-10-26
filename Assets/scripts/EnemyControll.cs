@@ -8,6 +8,7 @@ public class EnemyControll : MonoBehaviour
     private EnemyMove em;
 
     private GameObject bomber;
+    private GameObject brain;
     private GameObject arrow;
 
     private GameObject player;
@@ -27,6 +28,7 @@ public class EnemyControll : MonoBehaviour
 
 
     private SpriteRenderer spriteRenderer;
+    private Collider2D collider2d;
     private Color originalColor;
     public float flashDuration = 0.1f; // Duration of the red flash
 
@@ -37,8 +39,10 @@ public class EnemyControll : MonoBehaviour
         em = GetComponent<EnemyMove>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2d = GetComponent<Collider2D>();
 
-        bomber = this.gameObject;
+        bomber = GameObject.FindWithTag("bomber");
+        brain = GameObject.FindWithTag("brain");
         arrow = GameObject.FindWithTag("arrow");
 
         rb = GetComponent<Rigidbody2D>();
@@ -61,10 +65,9 @@ public class EnemyControll : MonoBehaviour
 
         particleEffect = GetComponentInChildren<ParticleSystem>();
 
-        if (particleEffect == null)
-        {
-            Debug.LogError("No ParticleSystem found in the child objects!");
-        }
+        
+        
+        
 
     }
 
@@ -101,10 +104,17 @@ public class EnemyControll : MonoBehaviour
     {
         if (collision.gameObject.tag == "arrow")
         {
+
             TakeDamage(20);
             Destroy(arrow);
         }
+
+        if (collision.gameObject.tag == "bomber" && this.tag == "brain")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -151,6 +161,7 @@ public class EnemyControll : MonoBehaviour
                 // Play the particle effect
                 particleEffect.Play();
                 spriteRenderer.enabled = false;
+                collider2d.enabled = false;
                 bomber.layer = LayerMask.NameToLayer("explosion");
             }
 
@@ -165,9 +176,13 @@ public class EnemyControll : MonoBehaviour
     private void Patrol()
     {
         // Simple patrol movement (for example, left-right movement)
-        if (bomber != null)
+        if (this.tag == "bomber")
         {
             em.StraightMove();
+        }
+        if(this.tag == "brain")
+        {
+            em.keepDistance();
         }
     }
 

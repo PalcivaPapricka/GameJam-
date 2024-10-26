@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4960214316471646287}
   m_Layer: 0
   m_Name: brain
-  m_TagString: bomber
+  m_TagString: brain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: -2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5487745881342182291}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: -486315051
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7139707040704976960, guid: 368e09d3e5833fa428a706057e05f998, type: 3}
+  m_Sprite: {fileID: -8012366398290018831, guid: 9957ca73dbf50c2429b05f16050b9db5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 4e4041d15c28195428cf97f60fd25127, type: 2}
-  keep_distance: 5
+  keep_distance: 20
   offset: {x: 0, y: 0, z: 0}
 --- !u!61 &-2586986550765234865
 BoxCollider2D:
@@ -184,17 +184,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.005907297, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.84375}
+    oldSize: {x: 0.32, y: 0.27}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0118146, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &-4960214316471646287
 Animator:

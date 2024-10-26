@@ -13,6 +13,7 @@ public class GameMaster : MonoBehaviour
     public int spawn_count = 4;
     public int spawn_at_distance = 10;
     public float spawn_wait_for = 0.5f;
+    public int spawn_limit = 50;
     private List<Vector3> spawns = new List<Vector3>();
 
 
@@ -39,10 +40,12 @@ public class GameMaster : MonoBehaviour
     {
         while (true)
         {
-            // Instantiate a new enemy bomber
-            Vector3 spawn_pos = clippy.transform.position + spawns[Random.Range(0, spawn_count)];
-            GameObject enemy = Instantiate(enemies_to_spawn[Random.Range(0, enemies_to_spawn.Count)], spawn_pos, Quaternion.identity);
-
+            if (count_enemies() < spawn_limit) 
+            { 
+                // Instantiate a new enemy bomber
+                Vector3 spawn_pos = clippy.transform.position + spawns[Random.Range(0, spawn_count)];
+                GameObject enemy = Instantiate(enemies_to_spawn[Random.Range(0, enemies_to_spawn.Count)], spawn_pos, Quaternion.identity);
+            }
             // Wait for the specified spawn interval before spawning the next enemy
             yield return new WaitForSeconds(spawn_wait_for);
         }
@@ -67,6 +70,25 @@ public class GameMaster : MonoBehaviour
         //    Debug.Log(spawns[index]);
         //}
     }
+
+    private int count_enemies()
+    {
+        int count = 0;
+        // Find all objects with a Renderer component in the scene
+        Renderer[] renderers = FindObjectsOfType<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            // Check if the Renderer is in the specified sorting layer
+            if (renderer.sortingLayerName == "enemies")
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public void RestartGame()
     {
         Debug.Log("som tu");

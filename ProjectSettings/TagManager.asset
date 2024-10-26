@@ -13,6 +13,7 @@ TagManager:
   - healbar
   - staminabar
   - gameMaster
+  - brain
   layers:
   - Default
   - TransparentFX
