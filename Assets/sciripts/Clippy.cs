@@ -10,6 +10,9 @@ public class Clippy : MonoBehaviour
     private float dirY;
     private float speed;
 
+
+    
+
     // Dash attributes
     private float startDashTime = 0.2f;
     private float dashSpeed = 25f;   
@@ -57,6 +60,8 @@ public class Clippy : MonoBehaviour
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
         }
+
+        
     }
 
     private void GetRoll()
