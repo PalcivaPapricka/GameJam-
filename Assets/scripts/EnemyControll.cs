@@ -75,11 +75,10 @@ public class EnemyControll : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-       
         if (collision.gameObject.CompareTag("Player"))
         {
             isCollidingWithPlayer = true;
-
+            StartCoroutine(FlashWhite());
             // Start the explode coroutine only if it's not already running
             if (explosionCoroutine == null)
             {
@@ -106,7 +105,7 @@ public class EnemyControll : MonoBehaviour
 
     private IEnumerator explode()
     {
-        StartCoroutine(FlashWhite());
+        
         yield return new WaitForSeconds(2);
 
         
