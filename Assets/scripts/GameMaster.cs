@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour
@@ -25,7 +27,7 @@ public class GameMaster : MonoBehaviour
             bomber.GetComponent<EnemyMove>().StraightMove();
         }
     }
-
+    
     private IEnumerator SpawnEnemiesInterval()
     {
         while (true)
@@ -38,4 +40,5 @@ public class GameMaster : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
     }
+    
 }
