@@ -20,7 +20,9 @@ public class Clippy : MonoBehaviour
     private bool canDash = true;
 
     public bool is_sprinting=false;
+
     public bool rollcounter;
+
     public int dmgtaken=0;
     private bool cantakedmg=true;
     private int damage_value;
@@ -50,12 +52,12 @@ public class Clippy : MonoBehaviour
         GetRoll();
 
         // Shooting logic
-        if (Input.GetMouseButtonDown(1) && shootingCoroutine == null)
+        if (Input.GetMouseButtonDown(0) && shootingCoroutine == null)
         {
             shootingCoroutine = StartCoroutine(ShootFireball());
         }
 
-        if (Input.GetMouseButtonUp(1) && shootingCoroutine != null )
+        if (Input.GetMouseButtonUp(0) && shootingCoroutine != null )
         {
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
@@ -66,8 +68,8 @@ public class Clippy : MonoBehaviour
 
     private void GetRoll()
     {
-        
-        if (canDash && Input.GetKeyDown(KeyCode.Space) && stm.player_stamina>20f)
+
+        if (canDash && Input.GetMouseButtonDown(1) && stm.player_stamina > 20f)
         {
             Vector2 direction = new Vector2(dirX, dirY).normalized; // Normalize direction based on input
 
@@ -101,18 +103,6 @@ public class Clippy : MonoBehaviour
         // Basic movement
         dirX = Input.GetAxisRaw("Horizontal");
         dirY = Input.GetAxisRaw("Vertical");
-        
-        // Sprinting logic
-        if (Input.GetKey(KeyCode.LeftShift) && stm.player_stamina>0f)
-        {
-            speed = 10f; // Sprint speed
-            is_sprinting=true;
-        }
-        else
-        {
-            speed = 6f; // Normal speed
-            is_sprinting=false;
-        }
 
         rb.linearVelocity = new Vector2(dirX * speed, dirY * speed); // Set movement velocity
     }
@@ -123,25 +113,25 @@ public class Clippy : MonoBehaviour
         {
             if(canDash!=false)
             {
-            Vector3 shootDirection = Input.mousePosition;
-            shootDirection.z = 0.0f;
-            shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
-            shootDirection = shootDirection - transform.position;
+                Vector3 shootDirection = Input.mousePosition;
+                shootDirection.z = 0.0f;
+                shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+                shootDirection = shootDirection - transform.position;
 
-            GameObject arrow_fired = Instantiate(fireball, transform.position, Quaternion.identity);
-            arrow_fired.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(shootDirection.x, shootDirection.y).normalized * speedarr;
+                GameObject arrow_fired = Instantiate(fireball, transform.position, Quaternion.identity);
+                arrow_fired.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(shootDirection.x, shootDirection.y).normalized * speedarr;
 
-            // Rotate the fireball to face the shooting direction
-            float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-            arrow_fired.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                // Rotate the fireball to face the shooting direction
+                float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
+                arrow_fired.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-            // Destroy the projectile after 120 seconds
-            Destroy(arrow_fired, 20f);
+                // Destroy the projectile after 120 seconds
+                Destroy(arrow_fired, 5f);
 
-            // Wait for 0.5 seconds before shooting again
-            yield return new WaitForSeconds(0.3f);
+                // Wait for 0.5 seconds before shooting again
+                yield return new WaitForSeconds(0.3f);
             }
-             yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }

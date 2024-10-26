@@ -6,34 +6,21 @@ public class projectile : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject  player;
-    Clippy cli ;
-
-
     private bool stopped = false;
 
-    
-    
-    void Start()  
+   
+    void Start()
     {
         rb=GetComponent<Rigidbody2D>();
         
-        player = GameObject.FindGameObjectWithTag("Player");  
-        cli = player.GetComponent<Clippy>();   
+        player = GameObject.FindGameObjectWithTag("Player");     
 
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-
-    
     }
-
-
 
     void OnCollisionEnter2D(Collision2D col)
     {
-       
-         Destroy(gameObject);
-          
-        
-        
+        Destroy(gameObject);
     }
 }
 

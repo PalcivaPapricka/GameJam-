@@ -10,11 +10,11 @@ public class GameMaster : MonoBehaviour
 
     public void Start()
     {
-
+        StartCoroutine(SpawnEnemiesInterval());
 
         //bomber = GameObject.FindWithTag("bomber");
 
-        GameObject enemyBomber = (GameObject)Instantiate(bomber, spawn.transform.position, Quaternion.identity);
+        //GameObject enemyBomber = (GameObject)Instantiate(bomber, spawn.transform.position, Quaternion.identity);
     }
 
 
@@ -26,6 +26,16 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    
-}
+    private IEnumerator SpawnEnemiesInterval()
+    {
+        while (true)
+        {
+            // Instantiate a new enemy bomber at the spawn position
+            GameObject enemyBomber = Instantiate(bomber, spawn.transform.position, Quaternion.identity);
+            // You can assign any necessary components or configurations to the enemy here if needed
 
+            // Wait for the specified spawn interval before spawning the next enemy
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+}
