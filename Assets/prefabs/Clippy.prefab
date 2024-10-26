@@ -168,11 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_stamina: 100
-  max_stamina: 100
   player_health: 100
-  max_health: 100
-  staminaprogressUI: {fileID: 0}
-  healthprogressUI: {fileID: 0}
   is_sprinting: 0
   rollcounter: 0
   dmgtaken: 0

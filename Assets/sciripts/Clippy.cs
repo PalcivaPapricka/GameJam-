@@ -65,14 +65,6 @@ public class Clippy : MonoBehaviour
         healthprogressUI = GameObject.FindWithTag("healbar");
         staminaImage = staminaprogressUI.GetComponent<Image>();
         healthImage = healthprogressUI.GetComponent<Image>();
-
-        Debug.Log("Stamina Fill: " + staminaImage.fillAmount);
-        Debug.Log("Health Fill: " + healthImage.fillAmount);
-
-        staminaImage.fillAmount = 0.5f;
-
-        Debug.Log("Stamina Fill: " + staminaImage.fillAmount);
-
     }
 
     void Update()
