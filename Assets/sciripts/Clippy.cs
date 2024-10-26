@@ -39,6 +39,9 @@ public class Clippy : MonoBehaviour
     // Coins
     public int coins = 0;
 
+    //popup
+    public GameObject gameOver;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -175,9 +178,10 @@ public class Clippy : MonoBehaviour
 
         if (stm.player_health <= 0)
         {
-            Debug.Log(stm.player_health + "druhe hp");
+            
             //anim.SetBool("death", true);
             Destroy(gameObject, 0.3f);
+            gameOver.SetActive(true);
         }
 
         cantakedmg = true;

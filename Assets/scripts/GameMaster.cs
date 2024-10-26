@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -31,6 +32,11 @@ public class GameMaster : MonoBehaviour
             // Wait for the specified spawn interval before spawning the next enemy
             yield return new WaitForSeconds(1.0f);
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
     }
     
 }
