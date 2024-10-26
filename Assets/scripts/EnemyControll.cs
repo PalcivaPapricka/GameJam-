@@ -18,8 +18,8 @@ public class EnemyControll : MonoBehaviour
     private Coroutine explosionCoroutine;
     public Color colliderColor = Color.red;
 
+    private ParticleSystem particleEffect;
 
-    
 
     private bool isCollidingWithPlayer = false;
 
@@ -45,11 +45,19 @@ public class EnemyControll : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
 
-
+ 
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer component is missing on: " + gameObject.name);
+        }
+
+
+        particleEffect = GetComponentInChildren<ParticleSystem>();
+
+        if (particleEffect == null)
+        {
+            Debug.LogError("No ParticleSystem found in the child objects!");
         }
 
     }
@@ -118,6 +126,11 @@ public class EnemyControll : MonoBehaviour
         if (isCollidingWithPlayer)
         {
             bomber.layer = LayerMask.NameToLayer("explosion");
+            if (particleEffect != null)
+            {
+                // Play the particle effect
+                particleEffect.Play();
+            }
 
             Die(); // Call the Die method to perform the explosion
         }
@@ -142,6 +155,7 @@ public class EnemyControll : MonoBehaviour
         if (currentHealth <= 0)
         {
             anim.SetBool("death",true);
+            //getComponent()
             Die();
         }
     }
@@ -149,7 +163,7 @@ public class EnemyControll : MonoBehaviour
     private void Die()
     {
         // Destroy enemy and add effects or animations if needed
-        Destroy(gameObject,0.3f);
+        Destroy(gameObject,0.5f);
     }   
 
     private void OnDrawGizmosSelected()
