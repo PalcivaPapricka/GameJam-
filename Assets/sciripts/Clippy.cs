@@ -47,6 +47,8 @@ public class Clippy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         speed = 6f; // Set initial speed
         stm = Stamina.GetComponent<scrip>();
+        gameOver = GameObject.FindWithTag("gameoverUI");
+        gameOver.SetActive(false);
     }
 
     void Update()

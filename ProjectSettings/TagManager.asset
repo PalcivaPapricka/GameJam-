@@ -8,6 +8,7 @@ TagManager:
   - bomber
   - enemyBullet
   - UI
+  - gameoverUI
   layers:
   - Default
   - TransparentFX
