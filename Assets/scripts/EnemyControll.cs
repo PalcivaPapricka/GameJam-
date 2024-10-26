@@ -84,7 +84,7 @@ public class EnemyControll : MonoBehaviour
     private void Die()
     {
         // Destroy enemy and add effects or animations if needed
-        Destroy(gameObject,0.3f);
+        Destroy(gameObject,0.3f); //0.3f aby sa prehrala death animacia nesahajte na to !!
     }   
 
     private void OnDrawGizmosSelected()
