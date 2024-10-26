@@ -103,6 +103,18 @@ public class Clippy : MonoBehaviour
         dirY = Input.GetAxisRaw("Vertical");
 
         rb.linearVelocity = new Vector2(dirX * speed, dirY * speed); // Set movement velocity
+
+        //sprint
+        if (Input.GetKey(KeyCode.LeftShift) && stm.player_stamina>0f)
+        {
+            speed=10;
+            is_sprinting=true;
+        }
+        else
+        {
+            speed=6;
+            is_sprinting=false;
+        }
     }
 
     private IEnumerator ShootFireball()
