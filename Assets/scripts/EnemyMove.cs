@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+
+    public EnemyData enemyData;
     private GameObject player;
     private Transform positionPl;
-    [SerializeField]
-    private float followSpeed;
     public int keep_distance;
     public Vector3 offset;
     private Vector3 direction = Vector3.up;
     private Rigidbody2D rb;
+
+    private float movementSpeed;
 
     public void Start()
     {
@@ -22,6 +24,8 @@ public class EnemyMove : MonoBehaviour
          
           
         }
+
+        movementSpeed = enemyData.speed;
     }
 
     public void Update()
@@ -43,7 +47,7 @@ public class EnemyMove : MonoBehaviour
         if (positionPl != null)
         {
             rb.linearVelocity = Vector3.zero;
-            transform.position = Vector2.MoveTowards(transform.position, positionPl.position, followSpeed * Time.deltaTime * 5);
+            transform.position = Vector2.MoveTowards(transform.position, positionPl.position, movementSpeed * Time.deltaTime * 5);
             direction.x = 0;
             direction.y = 0;
         }
@@ -88,7 +92,7 @@ public class EnemyMove : MonoBehaviour
             _distance_from_player = Vector3.Distance(transform.position, positionPl.position);
             if (_distance_from_player > keep_distance)
             {
-                transform.position = Vector2.MoveTowards(transform.position, positionPl.position, followSpeed * Time.deltaTime * 5);
+                transform.position = Vector2.MoveTowards(transform.position, positionPl.position, movementSpeed * Time.deltaTime * 5);
             }
 
             // Optional: print the distance to the console for debugging
