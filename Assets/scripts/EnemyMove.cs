@@ -30,11 +30,8 @@ public class EnemyMove : MonoBehaviour
 
     public void Update()
     {
-        if (enemyData.enemyName == "bomber")
-        {
-            FacePlayer();
-        }
-        
+        FacePlayer();
+
     }
 
     public void ZigZagMove()
