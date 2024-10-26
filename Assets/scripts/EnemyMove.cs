@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-
-
-
     private GameObject player;
     private Transform positionPl;
     [SerializeField]
@@ -46,11 +43,5 @@ public class EnemyMove : MonoBehaviour
             direction.x = 0;
             direction.y = 0;
         }
-        
-        
     }   
-
-
-
-
 }

@@ -19,16 +19,8 @@ public class GameMaster : MonoBehaviour
         //GameObject enemyBomber = (GameObject)Instantiate(bomber, spawn.transform.position, Quaternion.identity);
     }
 
-
-    public void Update()
-    {
-        if (bomber != null)
-        {
-            bomber.GetComponent<EnemyMove>().StraightMove();
-        }
-    }
-    
     private IEnumerator SpawnEnemiesInterval()
+    // spawns enemy every period
     {
         while (true)
         {

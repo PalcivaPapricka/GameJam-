@@ -62,8 +62,6 @@ public class Clippy : MonoBehaviour
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
         }
-
-        
     }
 
     private void GetRoll()
@@ -95,7 +93,7 @@ public class Clippy : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero; // Stop dashing
         canDash = true;
-        rollcounter=true;
+        rollcounter = true;
     }
 
     private void GetMovement()

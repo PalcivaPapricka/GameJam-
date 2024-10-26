@@ -23,7 +23,6 @@ public class scrip : MonoBehaviour
     private float health_regen = 0.1f;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +78,8 @@ public class scrip : MonoBehaviour
 
     void update_health()
     {
+
+
         player_health-=cli.dmgtaken;
         cli.dmgtaken=0;
         healthprogressUI.fillAmount = (player_health / max_health);

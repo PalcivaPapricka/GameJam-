@@ -7,6 +7,7 @@ TagManager:
   - arrow
   - bomber
   - enemyBullet
+  - UI
   layers:
   - Default
   - TransparentFX
