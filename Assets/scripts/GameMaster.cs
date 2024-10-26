@@ -36,6 +36,7 @@ public class GameMaster : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log("som tu");
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
