@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550230bbf1325394ab858bf3a8edeba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clippy: {fileID: 7620668362355669594, guid: ba7254bfae7d8714e99d2491d3544fd4, type: 3}
