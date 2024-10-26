@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
 
+
+
     private GameObject player;
     private Transform positionPl;
     [SerializeField]
@@ -33,7 +35,6 @@ public class EnemyMove : MonoBehaviour
         {
 
         }
-        //spravit mopvement na zigzag
     }
 
     public void StraightMove()
