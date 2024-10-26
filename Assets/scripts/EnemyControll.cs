@@ -16,6 +16,10 @@ public class EnemyControll : MonoBehaviour
     private Animator anim;
 
     private Coroutine explosionCoroutine;
+    public Color colliderColor = Color.red;
+
+
+    
 
     private bool isCollidingWithPlayer = false;
 
@@ -34,6 +38,8 @@ public class EnemyControll : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentHealth = enemyData.health;
         InitializeEnemy();
+
+        
 
         anim=GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -111,6 +117,8 @@ public class EnemyControll : MonoBehaviour
         
         if (isCollidingWithPlayer)
         {
+            bomber.layer = LayerMask.NameToLayer("explosion");
+
             Die(); // Call the Die method to perform the explosion
         }
 

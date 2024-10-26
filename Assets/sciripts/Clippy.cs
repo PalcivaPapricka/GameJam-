@@ -68,6 +68,25 @@ public class Clippy : MonoBehaviour
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
         }
+
+        int targetLayer = LayerMask.NameToLayer("explosion");
+
+        // Find all colliders within a certain radius
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f); // 1f is the radius
+        foreach (Collider2D collider in colliders)
+        {
+            // Check if the collider is on the target layer
+            if (collider.gameObject.layer == targetLayer)
+            {
+               damage_value=50;
+               if (cantakedmg)
+                {
+                    StartCoroutine(TakeDamage());
+                }
+            }
+        }
+
+
     }
 
     private void GetRoll()
@@ -167,6 +186,9 @@ public class Clippy : MonoBehaviour
             }
         }
     }
+
+
+
 
     // Coroutine to handle damage cooldown
     private IEnumerator TakeDamage()
