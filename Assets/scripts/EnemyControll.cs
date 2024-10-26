@@ -18,8 +18,8 @@ public class EnemyControll : MonoBehaviour
     private Coroutine explosionCoroutine;
     public Color colliderColor = Color.red;
 
+    private ParticleSystem particleEffect;
 
-    
 
     private bool isCollidingWithPlayer = false;
 
@@ -51,6 +51,14 @@ public class EnemyControll : MonoBehaviour
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer component is missing on: " + gameObject.name);
+        }
+
+
+        particleEffect = GetComponentInChildren<ParticleSystem>();
+
+        if (particleEffect == null)
+        {
+            Debug.LogError("No ParticleSystem found in the child objects!");
         }
 
     }
@@ -119,6 +127,11 @@ public class EnemyControll : MonoBehaviour
         if (isCollidingWithPlayer)
         {
             bomber.layer = LayerMask.NameToLayer("explosion");
+            if (particleEffect != null)
+            {
+                // Play the particle effect
+                particleEffect.Play();
+            }
 
             Die(); // Call the Die method to perform the explosion
         }
@@ -143,6 +156,7 @@ public class EnemyControll : MonoBehaviour
         if (currentHealth <= 0)
         {
             anim.SetBool("death",true);
+            //getComponent()
             Die();
         }
     }
