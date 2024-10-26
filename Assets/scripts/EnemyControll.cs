@@ -49,7 +49,6 @@ public class EnemyControll : MonoBehaviour
         {
             TakeDamage(20);
             Destroy(arrow);
-
         }
     }
 
@@ -59,7 +58,6 @@ public class EnemyControll : MonoBehaviour
         if (bomber != null)
         {
             em.StraightMove();
-            //em.RandomShoot();
         }
     }
 
