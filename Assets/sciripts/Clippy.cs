@@ -15,13 +15,13 @@ public class Clippy : MonoBehaviour
 
     //stats
     public float player_stamina = 100f;
-    [SerializeField] private float max_stamina = 100f;
+    private float max_stamina = 100f;
 
     public float player_health = 100f;
-    [SerializeField] private float max_health = 100f;
+    private float max_health = 100f;
 
-    [SerializeField] private GameObject staminaprogressUI;
-    [SerializeField] private GameObject healthprogressUI;
+    private GameObject staminaprogressUI;
+    private GameObject healthprogressUI;
     private Image staminaImage;
     private Image healthImage;
 
@@ -66,6 +66,12 @@ public class Clippy : MonoBehaviour
         staminaImage = staminaprogressUI.GetComponent<Image>();
         healthImage = healthprogressUI.GetComponent<Image>();
 
+        Debug.Log("Stamina Fill: " + staminaImage.fillAmount);
+        Debug.Log("Health Fill: " + healthImage.fillAmount);
+
+        staminaImage.fillAmount = 0.5f;
+
+        Debug.Log("Stamina Fill: " + staminaImage.fillAmount);
 
     }
 
