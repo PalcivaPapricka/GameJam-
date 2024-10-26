@@ -26,9 +26,7 @@ public class EnemyMove : MonoBehaviour
 
     public void Update()
     {
-        //StraightMove();
         FacePlayer();
-        keepDistance();
     }
 
     public void ZigZagMove()
@@ -39,6 +37,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    // Function to move the enemy straight towards the player's position
     public void StraightMove()
     {
         if (positionPl != null)
@@ -78,17 +77,16 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    // Range attack for enemies, follow the player and stop at a certain distance
-    private void keepDistance()
+    // Function to keep the enemy at a set distance from the player
+    public void keepDistance()
     {
-        
-        float distance_from_player;
+        float _distance_from_player;
 
         if (positionPl != null)
         {
             // Calculate the distance between the enemy and the player
-            distance_from_player = Vector3.Distance(transform.position, positionPl.position);
-            if (distance_from_player > keep_distance)
+            _distance_from_player = Vector3.Distance(transform.position, positionPl.position);
+            if (_distance_from_player > keep_distance)
             {
                 transform.position = Vector2.MoveTowards(transform.position, positionPl.position, followSpeed * Time.deltaTime * 5);
             }

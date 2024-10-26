@@ -21,10 +21,8 @@ public class EnemyControll : MonoBehaviour
     public float flashDuration = 0.1f; // Duration of the red flash
 
     private void Start()
-    {
-        
-        em = FindObjectOfType<EnemyMove>();
-       
+    { 
+        em = GetComponent<EnemyMove>();
 
         bomber = GameObject.FindWithTag("bomber");
         arrow = GameObject.FindWithTag("arrow");
@@ -45,18 +43,12 @@ public class EnemyControll : MonoBehaviour
             Debug.LogError("No Enemy Data assigned to " + gameObject.name);
             return;
         }
-
-        
-        
     }
 
     private void Update()
     {
         // Sample movement code (could use AI pathfinding or other logic)
         Patrol();
-
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,7 +57,6 @@ public class EnemyControll : MonoBehaviour
         {
             TakeDamage(20);
             Destroy(arrow);
-
         }
     }
 
@@ -74,8 +65,7 @@ public class EnemyControll : MonoBehaviour
         // Simple patrol movement (for example, left-right movement)
         if (bomber != null)
         {
-            //em.StraightMove();
-            //em.RandomShoot();
+            em.StraightMove();
         }
     }
 
