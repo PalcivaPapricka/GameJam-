@@ -24,7 +24,7 @@ public class EnemyControll : MonoBehaviour
     { 
         em = GetComponent<EnemyMove>();
 
-        bomber = GameObject.FindWithTag("bomber");
+        bomber = this.gameObject;
         arrow = GameObject.FindWithTag("arrow");
 
         rb = GetComponent<Rigidbody2D>();
@@ -97,8 +97,8 @@ public class EnemyControll : MonoBehaviour
     private IEnumerator FlashRed()
     {
         // Set color to red
-        spriteRenderer.color = Color.red;
-
+        //spriteRenderer.color = Color.red;
+        spriteRenderer.color = new Color(1f, 0f, 0f, 0.5f);
         // Wait for the flash duration
         yield return new WaitForSeconds(flashDuration);
 
