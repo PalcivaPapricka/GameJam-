@@ -18,15 +18,12 @@ public class GameMaster : MonoBehaviour
 
     public GameObject gameOver;
 
-<<<<<<< Updated upstream
-=======
     public GameObject[] enemies;
     private EnemyMove em;
     public GameObject bomber;
     public GameObject spawn;
     public GameObject Clippyspawn;
     public GameObject player;
->>>>>>> Stashed changes
 
     public void Start()
     {
@@ -34,19 +31,17 @@ public class GameMaster : MonoBehaviour
         generate_spawns();
         StartCoroutine(SpawnEnemiesInterval());
 
-<<<<<<< Updated upstream
         //disable gameover UI 
         gameOver = GameObject.FindWithTag("gameoverUI");
         gameOver.SetActive(false);
-=======
         //GameObject clippy = (GameObject)Instantiate(player, Clippyspawn.transform.position, Quaternion.identity);
 
         //bomber = GameObject.FindWithTag("bomber");
->>>>>>> Stashed changes
+
 
         //Spawn player
         GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
-        
+
     }
 
     private IEnumerator SpawnEnemiesInterval()
@@ -66,7 +61,7 @@ public class GameMaster : MonoBehaviour
     private void generate_spawns()
     {
         float angle = 0;
-        for (int index=0; index< spawn_count; index++)
+        for (int index = 0; index < spawn_count; index++)
         {
             // Calculate spawn position based on the angle and distance
             float x = spawn_at_distance * Mathf.Cos(angle);
@@ -88,5 +83,5 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
-    
+
 }
