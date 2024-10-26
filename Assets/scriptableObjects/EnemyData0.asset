@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData0
   m_EditorClassIdentifier: 
   enemyName: bomber
-  health: 100
-  speed: 2
+  health: 500
+  speed: 1
   damage: 12
   detectionRange: 5
