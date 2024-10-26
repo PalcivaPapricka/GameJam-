@@ -45,7 +45,7 @@ public class EnemyControll : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
 
-
+ 
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
@@ -149,7 +149,7 @@ public class EnemyControll : MonoBehaviour
     private void Die()
     {
         // Destroy enemy and add effects or animations if needed
-        Destroy(gameObject,0.3f);
+        Destroy(gameObject,0.5f);
     }   
 
     private void OnDrawGizmosSelected()
