@@ -7,17 +7,23 @@ using UnityEngine.SceneManagement;
 public class GameMaster : MonoBehaviour
 {
     public GameObject clippy;
-
+    public Transform clippySpawn;
     // spawning logic
     public List<GameObject> enemies_to_spawn;
     public int spawn_count = 4;
     public int spawn_at_distance = 10;
     public float spawn_wait_for = 0.5f;
     private List<Vector3> spawns = new List<Vector3>();
-    
+
+
+    public GameObject gameOver;
+
 
     public void Start()
     {
+        gameOver = GameObject.FindWithTag("gameoverUI");
+        gameOver.SetActive(false);
+        GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
         generate_spawns();
         StartCoroutine(SpawnEnemiesInterval());
     }

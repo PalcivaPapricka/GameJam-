@@ -11,9 +11,10 @@ public class projectile : MonoBehaviour
    
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
         
-        player = GameObject.FindGameObjectWithTag("Player");     
+        
+        player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
 
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
