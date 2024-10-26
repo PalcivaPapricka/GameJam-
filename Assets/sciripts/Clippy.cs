@@ -184,6 +184,7 @@ public class Clippy : MonoBehaviour
             //anim.SetBool("death", true);
             Destroy(gameObject, 0.3f);
             gameOver.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         cantakedmg = true;
