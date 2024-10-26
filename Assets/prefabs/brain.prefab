@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4960214316471646287}
   m_Layer: 0
   m_Name: brain
-  m_TagString: bomber
+  m_TagString: brain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 4e4041d15c28195428cf97f60fd25127, type: 2}
-  keep_distance: 5
+  keep_distance: 20
   offset: {x: 0, y: 0, z: 0}
 --- !u!61 &-2586986550765234865
 BoxCollider2D:

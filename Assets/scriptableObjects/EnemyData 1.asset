@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: brain
   health: 60
-  speed: 5
+  speed: 3
   damage: 30
   detectionRange: 5
   bullet: {fileID: 8466147354786987891, guid: 64775378fe84b5241bcdb6a8cf291778, type: 3}
