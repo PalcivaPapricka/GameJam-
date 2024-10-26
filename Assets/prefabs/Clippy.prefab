@@ -167,6 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4d4b02ebdfc8c439caa1bacae7c47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_stamina: 100
+  max_stamina: 100
+  player_health: 100
+  max_health: 100
+  staminaprogressUI: {fileID: 0}
+  healthprogressUI: {fileID: 0}
   is_sprinting: 0
   rollcounter: 0
   dmgtaken: 0
