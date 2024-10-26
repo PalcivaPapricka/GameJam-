@@ -123,13 +123,13 @@ public class Clippy : MonoBehaviour
                 float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
                 arrow_fired.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-                // Destroy the projectile after 120 seconds
+                // Destroy the projectile after 5 seconds
                 Destroy(arrow_fired, 5f);
 
                 // Wait for 0.5 seconds before shooting again
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0f);  
         }
     }
 }

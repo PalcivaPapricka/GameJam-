@@ -18,12 +18,15 @@ public class EnemyMove : MonoBehaviour
         if (player != null)
         {
             positionPl = player.transform;
+         
+          
         }
     }
 
     public void Update()
     {
         StraightMove();
+        FacePlayer(); 
     }
 
     public void ZigZagMove()
@@ -42,6 +45,19 @@ public class EnemyMove : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, positionPl.position, followSpeed * Time.deltaTime * 5);
             direction.x = 0;
             direction.y = 0;
+        }
+    }
+
+     private void FacePlayer()
+    {
+        if (positionPl != null)
+        {
+            // Calculate the direction vector from the enemy to the player
+            Vector2 directionToPlayer = (positionPl.position - transform.position).normalized;
+            // Calculate the angle in degrees
+            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+            // Rotate the enemy to face the player
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }   
 }
