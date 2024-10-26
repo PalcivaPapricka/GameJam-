@@ -28,6 +28,7 @@ public class EnemyControll : MonoBehaviour
 
 
     private SpriteRenderer spriteRenderer;
+    private Collider2D collider2d;
     private Color originalColor;
     public float flashDuration = 0.1f; // Duration of the red flash
 
@@ -38,6 +39,7 @@ public class EnemyControll : MonoBehaviour
         em = GetComponent<EnemyMove>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2d = GetComponent<Collider2D>();
 
         bomber = GameObject.FindWithTag("bomber");
         brain = GameObject.FindWithTag("brain");
@@ -63,10 +65,6 @@ public class EnemyControll : MonoBehaviour
 
         particleEffect = GetComponentInChildren<ParticleSystem>();
 
-        if (particleEffect == null)
-        {
-            Debug.LogError("No ParticleSystem found in the child objects!");
-        }
         
         
         
@@ -163,6 +161,7 @@ public class EnemyControll : MonoBehaviour
                 // Play the particle effect
                 particleEffect.Play();
                 spriteRenderer.enabled = false;
+                collider2d.enabled = false;
                 bomber.layer = LayerMask.NameToLayer("explosion");
             }
 
