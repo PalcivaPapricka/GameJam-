@@ -148,14 +148,13 @@ public class Clippy : MonoBehaviour
     void update_stamina(int val)
     {
         staminaImage.fillAmount = player_stamina / max_stamina;
-        Debug.Log(player_stamina + "stamina");
+        
 
     }
 
     void update_health()
     {
 
-        Debug.Log(player_health);
         player_health -= dmgtaken;
         dmgtaken = 0;
         healthImage.fillAmount = (player_health / max_health);
