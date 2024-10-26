@@ -46,7 +46,7 @@ public class GameMaster : MonoBehaviour
 
         //Spawn player
         GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
-        
+
     }
 
     private IEnumerator SpawnEnemiesInterval()
@@ -66,7 +66,7 @@ public class GameMaster : MonoBehaviour
     private void generate_spawns()
     {
         float angle = 0;
-        for (int index=0; index< spawn_count; index++)
+        for (int index = 0; index < spawn_count; index++)
         {
             // Calculate spawn position based on the angle and distance
             float x = spawn_at_distance * Mathf.Cos(angle);
@@ -88,5 +88,5 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
-    
+
 }
