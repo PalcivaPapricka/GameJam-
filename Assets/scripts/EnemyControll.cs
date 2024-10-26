@@ -8,6 +8,7 @@ public class EnemyControll : MonoBehaviour
     private EnemyMove em;
 
     private GameObject bomber;
+    private GameObject brain;
     private GameObject arrow;
 
     private GameObject player;
@@ -38,7 +39,8 @@ public class EnemyControll : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        bomber = this.gameObject;
+        bomber = GameObject.FindWithTag("bomber");
+        brain = GameObject.FindWithTag("brain");
         arrow = GameObject.FindWithTag("arrow");
 
         rb = GetComponent<Rigidbody2D>();
@@ -65,6 +67,9 @@ public class EnemyControll : MonoBehaviour
         {
             Debug.LogError("No ParticleSystem found in the child objects!");
         }
+        
+        
+        
 
     }
 
@@ -101,10 +106,17 @@ public class EnemyControll : MonoBehaviour
     {
         if (collision.gameObject.tag == "arrow")
         {
+
             TakeDamage(20);
             Destroy(arrow);
         }
+
+        if (collision.gameObject.tag == "bomber" && this.tag == "brain")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
