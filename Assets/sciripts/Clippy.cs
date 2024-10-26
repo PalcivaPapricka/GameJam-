@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Clippy : MonoBehaviour
 {
@@ -11,7 +13,21 @@ public class Clippy : MonoBehaviour
     private float speed;
 
 
-    
+    //stats
+    public float player_stamina = 100f;
+    [SerializeField] private float max_stamina = 100f;
+
+    public float player_health = 100f;
+    [SerializeField] private float max_health = 100f;
+
+    [SerializeField] private GameObject staminaprogressUI;
+    [SerializeField] private GameObject healthprogressUI;
+    private Image staminaImage;
+    private Image healthImage;
+
+    private float health_regen = 0.1f;
+
+
 
     // Dash attributes
     private float startDashTime = 0.2f;
@@ -27,9 +43,6 @@ public class Clippy : MonoBehaviour
     private bool cantakedmg=true;
     private int damage_value;
 
-    private scrip stamina_bar ;
-    [SerializeField] GameObject Stamina;
-    scrip stm ;
 
     // Shooting attributes
     [SerializeField] GameObject fireball; // Fireball prefab
@@ -39,17 +52,21 @@ public class Clippy : MonoBehaviour
     // Coins
     public int coins = 0;
 
-    //popup
-    public GameObject gameOver;
+    GameObject gam;
+    GameMaster gm;
 
     void Start()
     {
-        
+        gam = GameObject.FindWithTag("gameMaster");
+        gm = gam.GetComponent<GameMaster>();
         rb = GetComponent<Rigidbody2D>();
         speed = 6f; // Set initial speed
-        stm = Stamina.GetComponent<scrip>();
-        gameOver = GameObject.FindWithTag("gameoverUI");
-        gameOver.SetActive(false);
+        staminaprogressUI = GameObject.FindWithTag("staminabar");
+        healthprogressUI = GameObject.FindWithTag("healbar");
+        staminaImage = staminaprogressUI.GetComponent<Image>();
+        healthImage = healthprogressUI.GetComponent<Image>();
+
+
     }
 
     void Update()
@@ -89,10 +106,67 @@ public class Clippy : MonoBehaviour
 
     }
 
+    void FixedUpdate()
+    {
+
+        update_health();
+
+        if (is_sprinting)
+        {
+            player_stamina = player_stamina - 0.5f;
+            update_stamina(1);
+        }
+
+        if (rollcounter == true)
+        {
+            player_stamina = player_stamina - 20f;
+            update_stamina(1);
+            rollcounter = false;
+        }
+
+
+        if (player_stamina < max_stamina && !is_sprinting)
+        {
+            player_stamina = player_stamina + 0.2f;
+            update_stamina(1);
+
+        }
+
+        if (player_health < max_health)
+        {
+            player_health = player_health + health_regen;
+            update_health();
+
+        }
+
+        if (player_stamina >= max_stamina && player_health >= max_health)
+        {
+            update_stamina(0);
+        }
+    }
+
+    void update_stamina(int val)
+    {
+        staminaImage.fillAmount = player_stamina / max_stamina;
+        Debug.Log(player_stamina + "stamina");
+
+    }
+
+    void update_health()
+    {
+
+        Debug.Log(player_health);
+        player_health -= dmgtaken;
+        dmgtaken = 0;
+        healthImage.fillAmount = (player_health / max_health);
+
+
+    }
+
     private void GetRoll()
     {
 
-        if (canDash && Input.GetMouseButtonDown(1) && stm.player_stamina > 20f)
+        if (canDash && Input.GetMouseButtonDown(1) && player_stamina > 20f)
         {
             Vector2 direction = new Vector2(dirX, dirY).normalized; // Normalize direction based on input
 
@@ -130,7 +204,7 @@ public class Clippy : MonoBehaviour
         rb.linearVelocity = new Vector2(dirX * speed, dirY * speed); // Set movement velocity
 
         //sprint
-        if (Input.GetKey(KeyCode.LeftShift) && stm.player_stamina>0f)
+        if (Input.GetKey(KeyCode.LeftShift) && player_stamina>0f)
         {
             speed=10;
             is_sprinting=true;
@@ -201,12 +275,12 @@ public class Clippy : MonoBehaviour
         // Wait for 0.2 seconds before allowing damage again
         yield return new WaitForSeconds(0.2f);
 
-        if (stm.player_health <= 0)
+        if (player_health <= 0)
         {
             
             //anim.SetBool("death", true);
             Destroy(gameObject, 0.3f);
-            gameOver.SetActive(true);
+            gm.gameOver.SetActive(true);
             Time.timeScale = 0f;
         }
 

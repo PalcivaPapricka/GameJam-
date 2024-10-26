@@ -6,14 +6,15 @@ using TMPro;
 
 public class scrip : MonoBehaviour
 {
+    /*
     public float player_stamina = 100f;
     [SerializeField] private float max_stamina =100f;
 
     public float player_health = 100f;
     [SerializeField] private float max_health =100f;
 
-    Clippy cli ;
-    [SerializeField] GameObject Player;
+    public Clippy cli;
+    GameObject Player;
 
     [SerializeField] private Image staminaprogressUI;
     [SerializeField] private Image healthprogressUI;
@@ -26,6 +27,7 @@ public class scrip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindWithTag("Player");
         cli = Player.GetComponent<Clippy>();
     }
 
@@ -87,7 +89,7 @@ public class scrip : MonoBehaviour
         
     }
 
-
+    */
 
 
 }

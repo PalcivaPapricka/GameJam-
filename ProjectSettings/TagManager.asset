@@ -9,6 +9,10 @@ TagManager:
   - enemyBullet
   - UI
   - gameoverUI
+  - ui
+  - healbar
+  - staminabar
+  - gameMaster
   layers:
   - Default
   - TransparentFX

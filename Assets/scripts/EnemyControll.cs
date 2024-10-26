@@ -38,7 +38,6 @@ public class EnemyControll : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentHealth = enemyData.health;
         InitializeEnemy();
-        Debug.Log(currentHealth);
 
         
 

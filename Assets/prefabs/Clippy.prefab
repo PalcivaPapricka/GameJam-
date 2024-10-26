@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2253884632071337564}
   - component: {fileID: 7098440180345248028}
   - component: {fileID: 357186552966155667}
-  - component: {fileID: 5235296049829739031}
   - component: {fileID: 7801747543488184831}
+  - component: {fileID: 5235296049829739031}
   m_Layer: 0
   m_Name: Clippy
   m_TagString: Player
@@ -118,26 +118,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5235296049829739031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7620668362355669594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4d4b02ebdfc8c439caa1bacae7c47e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  is_sprinting: 0
-  rollcounter: 0
-  dmgtaken: 0
-  Stamina: {fileID: 0}
-  fireball: {fileID: 8466147354786987891, guid: 2c05b696c3a0ae14982f65e432b3b4f3, type: 3}
-  speedarr: 15
-  coins: 0
-  gameOver: {fileID: 0}
 --- !u!70 &7801747543488184831
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -175,6 +155,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.1654107, y: 0.1007185}
   m_Size: {x: 0.75487864, y: 1.6131358}
   m_Direction: 0
+--- !u!114 &5235296049829739031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620668362355669594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4d4b02ebdfc8c439caa1bacae7c47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_sprinting: 0
+  rollcounter: 0
+  dmgtaken: 0
+  fireball: {fileID: 8466147354786987891, guid: 2c05b696c3a0ae14982f65e432b3b4f3, type: 3}
+  speedarr: 15
+  coins: 0
 --- !u!1 &9194023682560940935
 GameObject:
   m_ObjectHideFlags: 0
