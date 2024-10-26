@@ -39,11 +39,16 @@ public class Clippy : MonoBehaviour
     // Coins
     public int coins = 0;
 
+    //popup
+    public GameObject gameOver;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         speed = 6f; // Set initial speed
         stm = Stamina.GetComponent<scrip>();
+        gameOver = GameObject.FindWithTag("gameoverUI");
+        gameOver.SetActive(false);
     }
 
     void Update()
@@ -168,8 +173,19 @@ public class Clippy : MonoBehaviour
         cantakedmg = false;
         dmgtaken += damage_value;
 
+
+
         // Wait for 0.2 seconds before allowing damage again
         yield return new WaitForSeconds(0.2f);
+
+        if (stm.player_health <= 0)
+        {
+            
+            //anim.SetBool("death", true);
+            Destroy(gameObject, 0.3f);
+            gameOver.SetActive(true);
+        }
+
         cantakedmg = true;
     }
 
