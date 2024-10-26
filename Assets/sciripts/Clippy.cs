@@ -168,8 +168,18 @@ public class Clippy : MonoBehaviour
         cantakedmg = false;
         dmgtaken += damage_value;
 
+
+
         // Wait for 0.2 seconds before allowing damage again
         yield return new WaitForSeconds(0.2f);
+
+        if (stm.player_health <= 0)
+        {
+            Debug.Log(stm.player_health + "druhe hp");
+            //anim.SetBool("death", true);
+            Destroy(gameObject, 0.3f);
+        }
+
         cantakedmg = true;
     }
 

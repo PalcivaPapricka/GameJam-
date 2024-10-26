@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: f70853301fcb29140a7f707a1643e686, type: 2}
+  flashDuration: 0.1
 --- !u!114 &-7363210920006473818
 MonoBehaviour:
   m_ObjectHideFlags: 0
