@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1fb58f0f9b93ca458b6d69877fd4a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 0.5
+  enemyData: {fileID: 11400000, guid: 4e4041d15c28195428cf97f60fd25127, type: 2}
   keep_distance: 5
   offset: {x: 0, y: 0, z: 0}
 --- !u!61 &-2586986550765234865

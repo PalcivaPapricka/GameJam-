@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class EnemyData : ScriptableObject
 {
@@ -9,5 +10,6 @@ public class EnemyData : ScriptableObject
     public float speed;
     public int damage;
     public float detectionRange;
+    public GameObject bullet;
 
 }
