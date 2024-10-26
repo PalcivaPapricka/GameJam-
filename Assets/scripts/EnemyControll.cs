@@ -10,6 +10,8 @@ public class EnemyControll : MonoBehaviour
     private GameObject bomber;
     private GameObject arrow;
 
+    private GameObject player;
+
     private int currentHealth;
     private Rigidbody2D rb;
 
@@ -30,7 +32,8 @@ public class EnemyControll : MonoBehaviour
 
 
     private void Start()
-    { 
+    {
+        player = GameObject.FindWithTag("Player");
         em = GetComponent<EnemyMove>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -78,6 +81,20 @@ public class EnemyControll : MonoBehaviour
     {
         // Sample movement code (could use AI pathfinding or other logic)
         Patrol();
+        
+    }
+
+    public void CheckDistance()
+    {
+        float dis = (this.transform.position - player.transform.position).magnitude;
+        //Debug.Log("HURAAAAA: " + dis);
+        if (dis <= 14)
+        {
+            float damage = 50 * (1 - (dis / 20));
+
+            // Apply the damage to the player's health
+            player.GetComponent<Clippy>().player_health -= damage ;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -128,14 +145,16 @@ public class EnemyControll : MonoBehaviour
         
         if (isCollidingWithPlayer)
         {
-            bomber.layer = LayerMask.NameToLayer("explosion");
+            
             if (particleEffect != null)
             {
                 // Play the particle effect
                 particleEffect.Play();
                 spriteRenderer.enabled = false;
+                bomber.layer = LayerMask.NameToLayer("explosion");
             }
 
+            CheckDistance();
             Die(); // Call the Die method to perform the explosion
         }
 

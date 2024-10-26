@@ -92,28 +92,22 @@ public class Clippy : MonoBehaviour
             shootingCoroutine = null;
         }
 
-        int targetLayer = LayerMask.NameToLayer("explosion");
-
-        // Find all colliders within a certain radius
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f); // 1f is the radius
-        foreach (Collider2D collider in colliders)
-        {
-            // Check if the collider is on the target layer
-            if (collider.gameObject.layer == targetLayer)
-            {
-               damage_value=50;
-               if (cantakedmg)
-                {
-                    StartCoroutine(TakeDamage());
-                }
-            }
-        }
+        
 
 
     }
 
     void FixedUpdate()
     {
+
+        if (player_health <= 0)
+        {
+
+            //anim.SetBool("death", true);
+            Destroy(gameObject, 0.3f);
+            gm.gameOver.SetActive(true);
+            Time.timeScale = 0f;
+        }
 
         update_health();
 
