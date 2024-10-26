@@ -134,44 +134,53 @@ public class Clippy : MonoBehaviour
     }
 
 
-
-     IEnumerator takedmg()
+        private void OnCollisionEnter2D(Collision2D col)
     {
-        cantakedmg=false;
-        dmgtaken+=damage_value;
-        yield return new WaitForSeconds(0.3f);
-        cantakedmg=true;
-    }
-
-
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        IEnumerator co = takedmg();
-        if (col.gameObject.GetComponent<Renderer>().sortingLayerName == "enemies")
-        { 
-            damage_value=10;
-            if(col.gameObject.layer == 8) // layer 8 == enemy_arr
-            {
-                damage_value=50;
-            }
-
-            Rigidbody2D enemy = col.gameObject.GetComponent<Rigidbody2D>();
-            Vector2 diff =  transform.position - enemy.transform.position;
-            diff=diff.normalized;
-    
-            rb.AddForce(diff*1500,ForceMode2D.Force);
-            
-            if(cantakedmg)
-            {
-            StartCoroutine(co);
-            }        
-        }
-        else
+        // Check if collision object is an enemy
+        if (IsEnemy(col))
         {
-            StopCoroutine(co);
+            SetDamageValue(col);
+            ApplyKnockback(col);
+
+            // Only trigger damage if the character can currently take damage
+            if (cantakedmg)
+            {
+                StartCoroutine(TakeDamage());
+            }
         }
     }
+
+    // Coroutine to handle damage cooldown
+    private IEnumerator TakeDamage()
+    {
+        cantakedmg = false;
+        dmgtaken += damage_value;
+
+        // Wait for 0.2 seconds before allowing damage again
+        yield return new WaitForSeconds(0.2f);
+        cantakedmg = true;
+    }
+
+    // Determines if the collided object is an enemy
+    private bool IsEnemy(Collision2D col)
+    {
+        return col.gameObject.GetComponent<Renderer>().sortingLayerName == "enemies";
+    }
+
+    // Sets the appropriate damage value based on the object layer
+    private void SetDamageValue(Collision2D col)
+    {
+        damage_value = (col.gameObject.layer == 8) ? 50 : 10;
+    }
+
+    // Applies knockback force to the character based on the collision direction
+    private void ApplyKnockback(Collision2D col)
+    {
+        Rigidbody2D enemy = col.gameObject.GetComponent<Rigidbody2D>();
+        Vector2 diff = (transform.position - enemy.transform.position).normalized;
+        rb.AddForce(diff * 3000, ForceMode2D.Force);
+    }
+
 
 
 
