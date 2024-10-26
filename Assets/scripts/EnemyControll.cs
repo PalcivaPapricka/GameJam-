@@ -13,7 +13,11 @@ public class EnemyControll : MonoBehaviour
     private int currentHealth;
     private Rigidbody2D rb;
 
-     private Animator anim;
+    private Animator anim;
+
+    private Coroutine explosionCoroutine;
+
+    private bool isCollidingWithPlayer = false;
 
 
     private SpriteRenderer spriteRenderer;
@@ -58,6 +62,53 @@ public class EnemyControll : MonoBehaviour
             TakeDamage(20);
             Destroy(arrow);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+       
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isCollidingWithPlayer = true;
+
+            // Start the explode coroutine only if it's not already running
+            if (explosionCoroutine == null)
+            {
+                explosionCoroutine = StartCoroutine(explode());
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isCollidingWithPlayer = false;
+
+            // Stop the coroutine if the player exits
+            if (explosionCoroutine != null)
+            {
+                StopCoroutine(explosionCoroutine);
+                explosionCoroutine = null; // Reset the coroutine reference
+            }
+        }
+    }
+
+    private IEnumerator explode()
+    {
+        StartCoroutine(FlashWhite());
+        yield return new WaitForSeconds(2);
+
+        
+        if (isCollidingWithPlayer)
+        {
+            Die(); // Call the Die method to perform the explosion
+        }
+
+        
+        explosionCoroutine = null;
     }
 
     private void Patrol()
@@ -105,4 +156,18 @@ public class EnemyControll : MonoBehaviour
         // Revert to original color
         spriteRenderer.color = originalColor;
     }
+
+    private IEnumerator FlashWhite()
+    {
+        // Set color to red
+        //spriteRenderer.color = Color.red;
+        spriteRenderer.color = new Color(0f, 0f, 0f, 1f);
+        // Wait for the flash duration
+        yield return new WaitForSeconds(flashDuration);
+
+        // Revert to original color
+        spriteRenderer.color = originalColor;
+    }
+
+
 }
