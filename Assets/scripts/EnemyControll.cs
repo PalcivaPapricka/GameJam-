@@ -38,6 +38,14 @@ public class EnemyControll : MonoBehaviour
         anim=GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("SpriteRenderer component is missing on: " + gameObject.name);
+        }
+
     }
 
     private void InitializeEnemy()
@@ -147,6 +155,13 @@ public class EnemyControll : MonoBehaviour
 
     private IEnumerator FlashRed()
     {
+
+         if (spriteRenderer == null)
+        {
+          
+            yield break; // Exit if spriteRenderer is null
+        }
+
         // Set color to red
         //spriteRenderer.color = Color.red;
         spriteRenderer.color = new Color(1f, 0f, 0f, 0.5f);
@@ -159,6 +174,14 @@ public class EnemyControll : MonoBehaviour
 
     private IEnumerator FlashWhite()
     {
+
+         if (spriteRenderer == null)
+        {
+           
+            yield break; // Exit if spriteRenderer is null
+        }
+
+
         // Set color to red
         //spriteRenderer.color = Color.red;
         spriteRenderer.color = new Color(0f, 0f, 0f, 1f);
