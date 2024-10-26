@@ -6,6 +6,7 @@ public class EnemyMove : MonoBehaviour
     private Transform positionPl;
     [SerializeField]
     private float followSpeed;
+    public int keep_distance;
     public Vector3 offset;
     private Vector3 direction = Vector3.up;
     private Rigidbody2D rb;
@@ -25,8 +26,9 @@ public class EnemyMove : MonoBehaviour
 
     public void Update()
     {
-        StraightMove();
-        FacePlayer(); 
+        //StraightMove();
+        FacePlayer();
+        keepDistance();
     }
 
     public void ZigZagMove()
@@ -48,6 +50,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    // Rotate enemy to Player
      private void FacePlayer()
     {
         if (positionPl != null)
@@ -59,5 +62,27 @@ public class EnemyMove : MonoBehaviour
             // Rotate the enemy to face the player
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-    }   
+    }
+
+    // Range attack for enemies, follow the player and stop at a certain distance
+    private void keepDistance()
+    {
+        
+        float distance_from_player;
+
+        if (positionPl != null)
+        {
+            // Calculate the distance between the enemy and the player
+            distance_from_player = Vector3.Distance(transform.position, positionPl.position);
+            if (distance_from_player > keep_distance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, positionPl.position, followSpeed * Time.deltaTime * 5);
+            }
+
+            // Optional: print the distance to the console for debugging
+            //Debug.Log("Distance to Player: " + distance_from_player);
+        }
+
+
+    }
 }
