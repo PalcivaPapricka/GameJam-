@@ -10,9 +10,4 @@ public class EnemyData : ScriptableObject
     public int damage;
     public float detectionRange;
 
-    public void Tudu()
-    {
-        Debug.Log("TUDUUUUUU");
-    }
-
 }
