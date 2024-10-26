@@ -18,12 +18,15 @@ public class GameMaster : MonoBehaviour
 
     public GameObject gameOver;
 
+<<<<<<< Updated upstream
+=======
     public GameObject[] enemies;
     private EnemyMove em;
     public GameObject bomber;
     public GameObject spawn;
     public GameObject Clippyspawn;
     public GameObject player;
+>>>>>>> Stashed changes
 
     public void Start()
     {
@@ -31,13 +34,15 @@ public class GameMaster : MonoBehaviour
         generate_spawns();
         StartCoroutine(SpawnEnemiesInterval());
 
+<<<<<<< Updated upstream
         //disable gameover UI 
         gameOver = GameObject.FindWithTag("gameoverUI");
         gameOver.SetActive(false);
+=======
         //GameObject clippy = (GameObject)Instantiate(player, Clippyspawn.transform.position, Quaternion.identity);
 
         //bomber = GameObject.FindWithTag("bomber");
-
+>>>>>>> Stashed changes
 
         //Spawn player
         GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
