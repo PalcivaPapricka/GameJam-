@@ -74,7 +74,6 @@ public class GameMaster : MonoBehaviour
 
     private int count_enemies()
     {
-        Debug.Log("IN count_enemies");
         int count = 0;
 
         // Find all objects with a Renderer component in the scene
