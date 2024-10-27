@@ -242,34 +242,36 @@ public class EnemyControll : MonoBehaviour
 
 
     private IEnumerator explode()
-{
-    yield return new WaitForSeconds(2);
-
-    if (isCollidingWithPlayer)
     {
-        if (particleEffect != null)
+        yield return new WaitForSeconds(2);
+
+        if (isCollidingWithPlayer)
         {
-            // Play the particle effect
-            anim.SetBool("death", true);
-            particleEffect.Play();
+            ParticleSystem explosionParticles = transform.Find("ExplosionParticles")?.GetComponent<ParticleSystem>();
+            if (particleEffect != null)
+            {
+                Debug.Log("particleEffect Component ERROR");
+                //Play the particle effect
+                //anim.SetBool("death", true);
+                particleEffect.Play();
+            }
+
+            if (bomber != null) // Ensure bomber is not null before accessing its layer
+            {
+                bomber.layer = LayerMask.NameToLayer("explosion");
+            }
+
+            CheckDistance();
+
+            // Ensure that Die() does not access any destroyed references
+            if (gameObject != null) // Check if the object is still active
+            {
+                Die(); // Call the Die method to perform the explosion
+            }
         }
 
-        if (bomber != null) // Ensure bomber is not null before accessing its layer
-        {
-            bomber.layer = LayerMask.NameToLayer("explosion");
-        }
-
-        CheckDistance();
-
-        // Ensure that Die() does not access any destroyed references
-        if (gameObject != null) // Check if the object is still active
-        {
-            Die(); // Call the Die method to perform the explosion
-        }
+        explosionCoroutine = null;
     }
-
-    explosionCoroutine = null;
-}
 
 
     private void Patrol()
