@@ -543,6 +543,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402020815}
   m_CullTransparentMesh: 1
+--- !u!114 &434572390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
+  m_PrefabInstance: {fileID: 1050912907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d3e5b2ef4d11d40b1513b24c193bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &551839915
 GameObject:
   m_ObjectHideFlags: 0
@@ -211719,7 +211730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0.000049591064}
+  m_AnchoredPosition: {x: 0, y: 0.000049591064}
   m_SizeDelta: {x: -0.000061035, y: 0.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964098027
@@ -212411,7 +212422,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 434572390}
         m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -214419,7 +214430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
         m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
