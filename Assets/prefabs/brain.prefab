@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6367983197420505174}
   - component: {fileID: -7363210920006473818}
   - component: {fileID: -2586986550765234865}
+  - component: {fileID: -4975761266220738278}
   m_Layer: 0
   m_Name: brain
   m_TagString: brain
@@ -195,6 +196,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0118146, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &-4975761266220738278
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440401436086477086}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d825b3db7fb7bc6499d7fec89669276e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7823610222032131237
 GameObject:
   m_ObjectHideFlags: 0

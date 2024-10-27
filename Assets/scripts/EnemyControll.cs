@@ -192,7 +192,10 @@ public class EnemyControll : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            anim.SetBool("death",true);
+            
+            anim.SetBool("death", true);
+            
+            
             //getComponent()
             Die();
         }
