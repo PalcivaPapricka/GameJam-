@@ -22,17 +22,16 @@ public class GameMaster : MonoBehaviour
 
     public void Start()
     {
-        //spawning enemies
-        generate_spawns();
-        StartCoroutine(SpawnEnemiesInterval());
-
         //disable gameover UI 
         gameOver = GameObject.FindWithTag("gameoverUI");
         gameOver.SetActive(false);
 
         //Spawn player
         GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
-        
+
+        //spawning enemies
+        generate_spawns();
+        StartCoroutine(SpawnEnemiesInterval());
     }
 
     private IEnumerator SpawnEnemiesInterval()
@@ -41,9 +40,9 @@ public class GameMaster : MonoBehaviour
         while (true)
         {
             if (count_enemies() < spawn_limit) 
-            { 
+            {
                 // Instantiate a new enemy bomber
-                Vector3 spawn_pos = clippy.transform.position + spawns[Random.Range(0, spawn_count)];
+                Vector3 spawn_pos = GameObject.FindWithTag("Player").transform.position + spawns[Random.Range(0, spawn_count)];
                 GameObject enemy = Instantiate(enemies_to_spawn[Random.Range(0, enemies_to_spawn.Count)], spawn_pos, Quaternion.identity);
             }
             // Wait for the specified spawn interval before spawning the next enemy
@@ -75,7 +74,7 @@ public class GameMaster : MonoBehaviour
     {
         int count = 0;
         // Find all objects with a Renderer component in the scene
-        Renderer[] renderers = FindObjectsOfType<Renderer>();
+        Renderer[] renderers = GetComponents<Renderer>();
 
         foreach (Renderer renderer in renderers)
         {
