@@ -38,8 +38,17 @@ public class health_pickup : MonoBehaviour
             }
             else
             {
+                float actualhealth = player.GetComponent<Clippy>().player_health;
                 // Increase player's health
-                player.GetComponent<Clippy>().player_health += 25;
+                if (actualhealth < 75)
+                {
+                    player.GetComponent<Clippy>().player_health += 25;
+                }
+                else
+                {
+                    player.GetComponent<Clippy>().player_health += 100 - actualhealth;
+                }
+
                 // Destroy the health pickup
                
                 Destroy(gameObject); 

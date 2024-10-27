@@ -11,5 +11,6 @@ public class EnemyData : ScriptableObject
     public int damage;
     public float detectionRange;
     public GameObject bullet;
+    public int score;
 
 }

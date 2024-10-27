@@ -18,3 +18,4 @@ MonoBehaviour:
   damage: 12
   detectionRange: 3
   bullet: {fileID: 0}
+  score: 20

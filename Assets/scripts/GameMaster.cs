@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameMaster : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class GameMaster : MonoBehaviour
     public float spawn_wait_for = 0.5f;
     public int spawn_limit;
     private List<Vector3> spawns = new List<Vector3>();
+
+    public int scoreCounter = 0;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreTextGO;
 
 
     public GameObject gameOver;
@@ -34,6 +40,12 @@ public class GameMaster : MonoBehaviour
         StartCoroutine(SpawnEnemiesInterval());
     }
 
+    void Update()
+    {
+        scoreText.text = scoreCounter.ToString();
+        scoreTextGO.text = scoreCounter.ToString();
+    }
+
     private IEnumerator SpawnEnemiesInterval()
     // spawns enemy every period
     {
@@ -41,7 +53,7 @@ public class GameMaster : MonoBehaviour
         {
             if (count_enemies() < spawn_limit) 
             {
-                Debug.Log(count_enemies());
+                //Debug.Log(count_enemies());
                 // Instantiate a new enemy bomber
                 Vector3 spawn_pos = GameObject.FindWithTag("Player").transform.position + spawns[Random.Range(0, spawn_count)];
                 GameObject enemy = Instantiate(enemies_to_spawn[Random.Range(0, enemies_to_spawn.Count)], spawn_pos, Quaternion.identity);

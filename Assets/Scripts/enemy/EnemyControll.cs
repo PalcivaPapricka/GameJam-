@@ -8,6 +8,7 @@ public class EnemyControll : MonoBehaviour
 {
     public EnemyData enemyData;
     private EnemyMove em;
+    private GameObject gm;
 
     public GameObject drop;
 
@@ -19,6 +20,7 @@ public class EnemyControll : MonoBehaviour
 
     private int currentHealth;
     private Rigidbody2D rb;
+    private int score;
 
     private Animator anim;
 
@@ -126,6 +128,9 @@ public class EnemyControll : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         em = GetComponent<EnemyMove>();
+        gm = GameObject.FindWithTag("gameMaster");
+
+        score = enemyData.score;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2d = GetComponent<Collider2D>();
@@ -315,6 +320,7 @@ public class EnemyControll : MonoBehaviour
         // Destroy enemy and add effects or animations if needed
         GameObject death_drop = Instantiate(drop,transform.position,Quaternion.Euler(new Vector3(0,0,0)));
         Destroy(gameObject, 0.5f);
+        gm.GetComponent<GameMaster>().scoreCounter += score;
     }
 
 

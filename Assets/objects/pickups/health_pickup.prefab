@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followDistance: 4
-  followSpeed: 8
+  followSpeed: 15
 --- !u!50 &825466667644422404
 Rigidbody2D:
   serializedVersion: 5
