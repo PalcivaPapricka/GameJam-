@@ -255,7 +255,8 @@ public class EnemyControll : MonoBehaviour
             {
                 Debug.Log("particleEffect Component ERROR");
                 //Play the particle effect
-                //anim.SetBool("death", true);
+                gameObject.layer = 10;
+                anim.SetBool("death", true);
                 particleEffect.Play();
             }
 
@@ -297,9 +298,9 @@ public class EnemyControll : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-
+            gameObject.layer = 10;
             anim.SetBool("death", true);
-
+            
 
             //getComponent()
             Die();
