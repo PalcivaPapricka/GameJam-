@@ -40,9 +40,9 @@ public class health_pickup : MonoBehaviour
             {
                 float actualhealth = player.GetComponent<Clippy>().player_health;
                 // Increase player's health
-                if (actualhealth < 75)
+                if (actualhealth < 90)
                 {
-                    player.GetComponent<Clippy>().player_health += 25;
+                    player.GetComponent<Clippy>().player_health += 10;
                 }
                 else
                 {

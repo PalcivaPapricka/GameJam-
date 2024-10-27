@@ -8,8 +8,8 @@ public class WorldGeneration : MonoBehaviour
     private Vector3 cam_pos;
 
     // Chunk and rendering settings
-    public int chunk_size = 10;
-    public int max_render_distance = 2;
+    public int chunk_size = 50;
+    public int max_render_distance = 50;
 
     // Tilemap and Tile
     public Tilemap tilemap;           // Reference to the Tilemap component

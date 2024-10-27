@@ -232470,7 +232470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1584323877
 Transform:
   m_ObjectHideFlags: 0
@@ -232500,8 +232500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunk_size: 10
   max_render_distance: 2
-  tilemap: {fileID: 0}
-  customTile: {fileID: 0}
+  tilemap: {fileID: 551839918}
+  customTile: {fileID: 11400000, guid: 1ce719a43d3cda24380ddb97d0662306, type: 2}
 --- !u!1 &1588745321
 GameObject:
   m_ObjectHideFlags: 0
