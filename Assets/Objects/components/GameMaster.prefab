@@ -52,5 +52,5 @@ MonoBehaviour:
   spawn_count: 20
   spawn_at_distance: 40
   spawn_wait_for: 0.1
-  spawn_limit: 50
+  spawn_limit: 5
   gameOver: {fileID: 0}
