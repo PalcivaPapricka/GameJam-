@@ -13,7 +13,7 @@ public class GameMaster : MonoBehaviour
     public int spawn_count = 4;
     public int spawn_at_distance = 10;
     public float spawn_wait_for = 0.5f;
-    public int spawn_limit = 50;
+    public int spawn_limit;
     private List<Vector3> spawns = new List<Vector3>();
 
 
@@ -41,6 +41,7 @@ public class GameMaster : MonoBehaviour
         {
             if (count_enemies() < spawn_limit) 
             {
+                Debug.Log(count_enemies());
                 // Instantiate a new enemy bomber
                 Vector3 spawn_pos = GameObject.FindWithTag("Player").transform.position + spawns[Random.Range(0, spawn_count)];
                 GameObject enemy = Instantiate(enemies_to_spawn[Random.Range(0, enemies_to_spawn.Count)], spawn_pos, Quaternion.identity);
@@ -52,6 +53,7 @@ public class GameMaster : MonoBehaviour
 
     private void generate_spawns()
     {
+
         float angle = 0;
         for (int index=0; index< spawn_count; index++)
         {
@@ -72,6 +74,7 @@ public class GameMaster : MonoBehaviour
 
     private int count_enemies()
     {
+        Debug.Log("IN count_enemies");
         int count = 0;
         // Find all objects with a Renderer component in the scene
         Renderer[] renderers = GetComponents<Renderer>();
@@ -82,6 +85,7 @@ public class GameMaster : MonoBehaviour
             if (renderer.sortingLayerName == "enemies")
             {
                 count++;
+                Debug.Log(count);
             }
         }
 

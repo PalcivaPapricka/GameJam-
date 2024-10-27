@@ -42,6 +42,9 @@ public class EnemyControll : MonoBehaviour
     public float bullet_fire_rate = 0.5f;
     // bullet function
 
+    private Collider2D enemyCollider;
+    private bool isDead = false;
+
 
     private void BasicConstantRangedAttackt()
     {
@@ -101,6 +104,8 @@ public class EnemyControll : MonoBehaviour
 
 
         particleEffect = GetComponentInChildren<ParticleSystem>();
+
+        enemyCollider = GetComponent<Collider2D>();
     }
 
 
@@ -122,7 +127,12 @@ public class EnemyControll : MonoBehaviour
         if (tag == "brain")
         {
             BasicConstantRangedAttackt(); // debug code TODO: implement this better
-        }   
+        }
+
+        if (isDead)
+        {
+            DisableCollider();
+        }
     }
 
     public void CheckDistance()
@@ -241,7 +251,8 @@ public class EnemyControll : MonoBehaviour
 
             anim.SetBool("death", true);
 
-
+            isDead = true;
+            DisableCollider();
             //getComponent()
             Die();
         }
@@ -252,6 +263,16 @@ public class EnemyControll : MonoBehaviour
     {
         // Destroy enemy and add effects or animations if needed
         Destroy(gameObject, 0.5f);
+    }
+
+    // Disables Collider for dead enemies
+    void DisableCollider()
+    {
+        if (enemyCollider != null)
+        {
+            Destroy(enemyCollider);
+            Debug.Log("Collider disabled on enemy.");
+        }
     }
 
 
