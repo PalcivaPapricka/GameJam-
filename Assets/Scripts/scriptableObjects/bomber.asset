@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: bomber
   m_EditorClassIdentifier: 
   enemyName: bomber
-  health: 100
+  health: 60
   speed: 1
   damage: 12
   detectionRange: 3
+  bullet: {fileID: 0}
