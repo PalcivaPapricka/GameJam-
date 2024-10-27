@@ -250,6 +250,7 @@ public class EnemyControll : MonoBehaviour
         if (particleEffect != null)
         {
             // Play the particle effect
+            anim.SetBool("death", true);
             particleEffect.Play();
         }
 
