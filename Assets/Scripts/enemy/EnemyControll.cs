@@ -9,6 +9,8 @@ public class EnemyControll : MonoBehaviour
     public EnemyData enemyData;
     private EnemyMove em;
 
+    public GameObject drop;
+
     private GameObject bomber;
     private GameObject brain;
     private GameObject arrow;   //WTF is arrow ????
@@ -270,7 +272,7 @@ public class EnemyControll : MonoBehaviour
             // Ensure that Die() does not access any destroyed references
             if (gameObject != null) // Check if the object is still active
             {
-                Die(); // Call the Die method to perform the explosion
+                Destroy(gameObject, 0.5f);
             }
         }
 
@@ -311,6 +313,7 @@ public class EnemyControll : MonoBehaviour
     private void Die()
     {
         // Destroy enemy and add effects or animations if needed
+        GameObject death_drop = Instantiate(drop,transform.position,Quaternion.Euler(new Vector3(0,0,0)));
         Destroy(gameObject, 0.5f);
     }
 

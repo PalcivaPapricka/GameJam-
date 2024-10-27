@@ -15,6 +15,7 @@ TagManager:
   - gameMaster
   - brain
   - malware
+  - health_pickup
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5748922193196369438}
   m_Layer: 0
   m_Name: health_pickup
-  m_TagString: Untagged
+  m_TagString: health_pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followDistance: 4
-  followSpeed: 10
+  followSpeed: 8
 --- !u!50 &825466667644422404
 Rigidbody2D:
   serializedVersion: 5
