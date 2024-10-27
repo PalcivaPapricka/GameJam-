@@ -211831,6 +211831,14 @@ PrefabInstance:
       propertyPath: spawn_at_distance
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
+      propertyPath: enemies_to_spawn.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
+      propertyPath: 'enemies_to_spawn.Array.data[2]'
+      value: 
+      objectReference: {fileID: 5440401436086477086, guid: 3dc0b6ab66aa6144292e69be215b5582, type: 3}
     - target: {fileID: 3929099692188557642, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
       propertyPath: m_Name
       value: GameMaster

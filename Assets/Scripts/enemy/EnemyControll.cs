@@ -72,6 +72,54 @@ public class EnemyControll : MonoBehaviour
         }
     }
 
+
+    private void RandomRangedAttack()
+    {
+        // Wait certain time between shots
+        time_of_last_shot += Time.deltaTime;
+        if (time_of_last_shot >= 1 / bullet_fire_rate)
+        {
+            time_of_last_shot = 0;
+
+            // Define the offset distance to spawn bullets outside the enemy
+            float spawnOffset = 1f;  // Adjust as needed for desired distance
+
+            // Define the four directions for the bullets
+            Vector3[] shootDirections = new Vector3[]
+            {
+                Vector3.up,    // Up
+                Vector3.right, // Right
+                Vector3.down,  // Down
+                Vector3.left   // Left
+            };
+
+            // Loop through each direction to instantiate and set each bullet
+            foreach (Vector3 direction in shootDirections)
+            {
+                // Calculate the position outside the enemy
+                Vector3 spawnPosition = transform.position + direction * spawnOffset;
+
+                // Instantiate the bullet at the offset position
+                GameObject blob_fired = Instantiate(bullet, spawnPosition, Quaternion.identity);
+                
+                // Set the velocity of the bullet in one of the four directions
+                Rigidbody2D rb = blob_fired.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = direction * bullet_speed; // Set the speed
+                }
+
+                // Rotate the blob to face the shoot direction
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                blob_fired.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+
+                // Destroy the blob after x seconds
+                Destroy(blob_fired, bullet_life_time);
+            }
+        }
+    }
+
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -123,6 +171,11 @@ public class EnemyControll : MonoBehaviour
         {
             BasicConstantRangedAttackt(); // debug code TODO: implement this better
         }   
+        if(tag == "malware")
+        {
+            RandomRangedAttack();
+        }
+
     }
 
     public void CheckDistance()
