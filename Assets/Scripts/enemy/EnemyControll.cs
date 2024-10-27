@@ -192,6 +192,9 @@ public class EnemyControll : MonoBehaviour
     }
 
 
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "arrow")
@@ -338,25 +341,29 @@ public class EnemyControll : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    private IEnumerator FlashWhite()
+   private IEnumerator FlashWhite()
+{
+    if (spriteRenderer == null)
     {
-
-        if (spriteRenderer == null)
-        {
-
-            yield break; // Exit if spriteRenderer is null
-        }
-
-
-        // Set color to red
-        //spriteRenderer.color = Color.red;
-        spriteRenderer.color = new Color(0f, 0f, 0f, 1f);
-        // Wait for the flash duration
-        yield return new WaitForSeconds(flashDuration);
-
-        // Revert to original color
-        spriteRenderer.color = originalColor;
+        yield break; // Exit if spriteRenderer is null
     }
 
+    int flashCount = 3;  // Number of flashes
+    float interval = flashDuration / flashCount; // Interval per flash
+
+    for (int i = 0; i < flashCount; i++)
+    {
+        // Set to a brighter yellow
+        spriteRenderer.color = new Color(1f, 1f, 0.5f, 1f);
+        yield return new WaitForSeconds(interval / 2);
+
+        // Revert to original color briefly
+        spriteRenderer.color = originalColor;
+        yield return new WaitForSeconds(interval / 2);
+    }
+
+    // Ensure the sprite returns to its original color at the end
+    spriteRenderer.color = originalColor;
+}
 
 }
