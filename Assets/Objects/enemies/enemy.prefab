@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8241248037627082172}
   - component: {fileID: 3867697327498726015}
   - component: {fileID: 4344755072516944344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosionParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,7 +4851,7 @@ GameObject:
   - component: {fileID: -3114631801558636301}
   - component: {fileID: -4960214316471646287}
   - component: {fileID: -7963651256758746565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: enemy
   m_TagString: bomber
   m_Icon: {fileID: 0}
@@ -5116,7 +5116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5487745881342182291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

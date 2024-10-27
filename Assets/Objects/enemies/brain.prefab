@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7363210920006473818}
   - component: {fileID: -2586986550765234865}
   - component: {fileID: -4975761266220738278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brain
   m_TagString: brain
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   bullet: {fileID: 8466147354786987891, guid: 64775378fe84b5241bcdb6a8cf291778, type: 3}
   bullet_life_time: 25
   bullet_speed: 15
-  fire_rate: 1
+  bullet_fire_rate: 1
 --- !u!114 &-7363210920006473818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5487745881342182291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

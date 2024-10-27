@@ -41,6 +41,8 @@ public class EnemyControll : MonoBehaviour
     public float bullet_speed = 15;
     public float bullet_fire_rate = 1;
     // bullet function
+
+    
     private void BasicConstantRangedAttackt()
     {
         // wait certain time between shots
