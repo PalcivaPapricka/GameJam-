@@ -14,16 +14,13 @@ public class enemyBullet : MonoBehaviour
 
 
           int enemiesLayer = LayerMask.NameToLayer("enemy");
+          int projectileLayer = LayerMask.NameToLayer("player_projectile");
 
-        // Ensure the enemies layer exists (layer index should be between 0 and 31)
-        if (enemiesLayer >= 0 && enemiesLayer <= 31)
-        {
+       
+       
             Physics2D.IgnoreLayerCollision(enemiesLayer, enemiesLayer, true);
-        }
-        else
-        {
-            Debug.LogError("Layer 'enemies' does not exist or is out of range. Check the layer setup in Unity.");
-        }
+            Physics2D.IgnoreLayerCollision(projectileLayer,enemiesLayer,  true);
+       
     }
 
     void OnCollisionEnter2D(Collision2D col)
