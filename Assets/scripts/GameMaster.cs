@@ -76,8 +76,9 @@ public class GameMaster : MonoBehaviour
     {
         Debug.Log("IN count_enemies");
         int count = 0;
+
         // Find all objects with a Renderer component in the scene
-        Renderer[] renderers = GetComponents<Renderer>();
+        Renderer[] renderers = FindObjectsOfType<Renderer>();
 
         foreach (Renderer renderer in renderers)
         {
@@ -85,7 +86,6 @@ public class GameMaster : MonoBehaviour
             if (renderer.sortingLayerName == "enemies")
             {
                 count++;
-                Debug.Log(count);
             }
         }
 

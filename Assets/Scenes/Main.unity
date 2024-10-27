@@ -211824,6 +211824,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1884279561}
     - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
+      propertyPath: spawn_limit
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
       propertyPath: spawn_wait_for
       value: 0.25
       objectReference: {fileID: 0}
