@@ -84,9 +84,28 @@ public class EnemyControll : MonoBehaviour
     {
         // Sample movement code (could use AI pathfinding or other logic)
         Patrol();
+
+        //StartCoroutine(shoot());
         
     }
+    /*
+    IEnumerator shoot()
+    {
+        canattack = false;
+        Vector3 shootDirection;
+        Transform pain = target;
+        yield return new WaitForSeconds(1);
+        GameObject blob_fired = Instantiate(blob, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        shootDirection = pain.position - transform.position;
 
+        blob_fired.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(shootDirection.x, shootDirection.y).normalized * 5f;
+
+        blob_fired.transform.Rotate(0f, 0f, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
+
+        Destroy(blob_fired, 6f);
+        canattack = true;
+    }
+    */
     public void CheckDistance()
     {
         float dis = (this.transform.position - player.transform.position).magnitude;
