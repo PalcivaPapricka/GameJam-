@@ -15,11 +15,11 @@ public class enemyBullet : MonoBehaviour
 
           int enemiesLayer = LayerMask.NameToLayer("enemy");
           int projectileLayer = LayerMask.NameToLayer("player_projectile");
-
+          int enprojectile = LayerMask.NameToLayer("enemy_projectile");
        
        
-            Physics2D.IgnoreLayerCollision(enemiesLayer, enemiesLayer, true);
-            Physics2D.IgnoreLayerCollision(projectileLayer,enemiesLayer,  true);
+            Physics2D.IgnoreLayerCollision(enemiesLayer, enprojectile, true);
+            Physics2D.IgnoreLayerCollision(projectileLayer,enprojectile,  true);
        
     }
 
