@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public LeaderboardManager lm;
+
     public void playGame()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Main");   
     }
 
+    
     public void goToSettingsMenu()
     {
         SceneManager.LoadScene("SettingsMenu");

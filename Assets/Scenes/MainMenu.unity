@@ -488,6 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e41e7270b18a940bfb1bbf5fb4095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lm: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1 &318536181
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e41e7270b18a940bfb1bbf5fb4095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lm: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1 &488277720
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,8 +747,8 @@ Canvas:
   m_GameObject: {fileID: 488277720}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

@@ -21,13 +21,20 @@ public class GameMaster : MonoBehaviour
     public int scoreCounter = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreTextGO;
+    public int highScore = 0;
 
-
+    [SerializeField] public TMP_InputField _usernameInputField;
+    [SerializeField] private LeaderboardManager lm;
     public GameObject gameOver;
+
+    public GameObject panel;
 
 
     public void Start()
-    {
+    {        
+        Time.timeScale = 0f;
+        //lm = GetComponent<LeaderboardManager>();
+
         //disable gameover UI 
         gameOver = GameObject.FindWithTag("gameoverUI");
         gameOver.SetActive(false);
@@ -38,6 +45,24 @@ public class GameMaster : MonoBehaviour
         //spawning enemies
         generate_spawns();
         StartCoroutine(SpawnEnemiesInterval());
+        
+        string savedName = PlayerPrefs.GetString("Name",""); 
+        
+        if (!string.IsNullOrEmpty(savedName)){
+            _usernameInputField.text=savedName;
+            panel.SetActive(false);
+            Time.timeScale = 1f;            
+        }
+
+    }
+
+    public void SubmitButton(){
+        string playerName = lm._usernameInputField.text;
+        panel.SetActive(false);
+        PlayerPrefs.SetString("Name", playerName);
+        PlayerPrefs.Save();
+        Time.timeScale = 1f;
+
     }
 
     void Update()
@@ -106,6 +131,7 @@ public class GameMaster : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
+        highScore = PlayerPrefs.GetInt("highScore", highScore);
         Time.timeScale = 1f;
     }
     

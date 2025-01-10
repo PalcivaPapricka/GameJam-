@@ -54,11 +54,14 @@ public class Clippy : MonoBehaviour
 
     GameObject gam;
     GameMaster gm;
+    LeaderboardManager lm;
 
+  
     void Start()
     {
         gam = GameObject.FindWithTag("gameMaster");
         gm = gam.GetComponent<GameMaster>();
+        lm = gm.GetComponent<LeaderboardManager>();
         rb = GetComponent<Rigidbody2D>();
         speed = 6f; // Set initial speed
         staminaprogressUI = GameObject.FindWithTag("staminabar");
@@ -98,6 +101,15 @@ public class Clippy : MonoBehaviour
             //anim.SetBool("death", true);
             Destroy(gameObject, 0.3f);
             gm.gameOver.SetActive(true);
+            if(gm.scoreCounter > gm.highScore)
+            {
+                gm.highScore = gm.scoreCounter;
+                PlayerPrefs.SetInt("highScore", gm.highScore);
+                Debug.Log(gm.highScore);
+                lm.UploadEntry();
+            }
+            Debug.Log(gm.highScore);
+          
             Time.timeScale = 0f;
         }
 
