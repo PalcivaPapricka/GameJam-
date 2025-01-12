@@ -48,6 +48,7 @@ public class Clippy : MonoBehaviour
     [SerializeField] GameObject fireball; // Fireball prefab
     public float speedarr = 15f; // Speed of the fireball
     private Coroutine shootingCoroutine; // Reference to shooting coroutine
+    private AudioSource audioSource;
 
     // Coins
     public int coins = 0;
@@ -66,6 +67,7 @@ public class Clippy : MonoBehaviour
         healthprogressUI = GameObject.FindWithTag("healbar");
         staminaImage = staminaprogressUI.GetComponent<Image>();
         healthImage = healthprogressUI.GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -230,6 +232,9 @@ public class Clippy : MonoBehaviour
                 // Rotate the fireball to face the shooting direction
                 float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
                 arrow_fired.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+                // play sound
+                audioSource.Play();
 
                 // Destroy the projectile after 5 seconds
                 Destroy(arrow_fired, 5f);

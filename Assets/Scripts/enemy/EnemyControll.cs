@@ -28,7 +28,7 @@ public class EnemyControll : MonoBehaviour
     public Color colliderColor = Color.red;
 
     private ParticleSystem particleEffect;
-
+    private AudioSource audioSource;
 
     private bool isCollidingWithPlayer = false;
 
@@ -137,6 +137,7 @@ public class EnemyControll : MonoBehaviour
 
         bomber = GameObject.FindWithTag("bomber");
         arrow = GameObject.FindWithTag("arrow");
+        audioSource = GetComponent<AudioSource>();
 
         rb = GetComponent<Rigidbody2D>();
         currentHealth = enemyData.health;
@@ -182,7 +183,6 @@ public class EnemyControll : MonoBehaviour
         {
             RandomRangedAttack();
         }
-
     }
 
     public void CheckDistance()
@@ -320,6 +320,7 @@ public class EnemyControll : MonoBehaviour
         // Destroy enemy and add effects or animations if needed
         GameObject death_drop = Instantiate(drop,transform.position,Quaternion.Euler(new Vector3(0,0,0)));
         Destroy(gameObject, 0.5f);
+        audioSource.Play();
         gm.GetComponent<GameMaster>().scoreCounter += score;
     }
 

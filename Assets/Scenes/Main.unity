@@ -1551,7 +1551,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2018075738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -213653,11 +213653,11 @@ PrefabInstance:
       objectReference: {fileID: 990837231}
     - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
       propertyPath: spawn_limit
-      value: 95
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
       propertyPath: spawn_wait_for
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2882338108644020166, guid: 9faa83904dbd886449ed286be91096d3, type: 3}
       propertyPath: spawn_at_distance
@@ -214908,7 +214908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunk_size: 10
-  max_render_distance: 2
+  max_render_distance: 10
   tilemap: {fileID: 551839918}
   customTile: {fileID: 11400000, guid: 1ce719a43d3cda24380ddb97d0662306, type: 2}
 --- !u!1 &1588745321
@@ -216177,7 +216177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicClip: {fileID: 8300000, guid: 11a1cd490d9b7054ab801e11fcc78498, type: 3}
-  volume: 0.1
+  volume: 0.02
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

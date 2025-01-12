@@ -14,7 +14,7 @@ public class GameMaster : MonoBehaviour
     public List<GameObject> enemies_to_spawn;
     public int spawn_count = 4;
     public int spawn_at_distance = 10;
-    public float spawn_wait_for = 0.5f;
+    public float spawn_wait_for = 1f;
     public int spawn_limit;
     private List<Vector3> spawns = new List<Vector3>();
 
@@ -85,6 +85,7 @@ public class GameMaster : MonoBehaviour
             }
             // Wait for the specified spawn interval before spawning the next enemy
             yield return new WaitForSeconds(spawn_wait_for);
+            spawn_wait_for = Mathf.Max(0.25f, spawn_wait_for - 0.001f);
         }
     }
 
