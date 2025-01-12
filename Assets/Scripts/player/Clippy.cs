@@ -56,9 +56,7 @@ public class Clippy : MonoBehaviour
     GameMaster gm;
     LeaderboardManager lm;
 
-  
-    void Start()
-    {
+    void Start() {
         gam = GameObject.FindWithTag("gameMaster");
         gm = gam.GetComponent<GameMaster>();
         lm = gm.GetComponent<LeaderboardManager>();
@@ -86,10 +84,6 @@ public class Clippy : MonoBehaviour
             StopCoroutine(shootingCoroutine);
             shootingCoroutine = null;
         }
-
-        
-
-
     }
 
     void FixedUpdate()
