@@ -10,7 +10,7 @@ public class Clippy : MonoBehaviour
     private Rigidbody2D rb;
     private float dirX;
     private float dirY;
-    private float speed;
+    public float speed = 6f;
 
 
     //stats
@@ -18,16 +18,16 @@ public class Clippy : MonoBehaviour
     private float max_stamina = 100f;
 
     public float player_health = 100f;
-    private float max_health = 100f;
+    public float max_health = 100f;
 
     private GameObject staminaprogressUI;
     private GameObject healthprogressUI;
     private Image staminaImage;
     private Image healthImage;
 
-    private float health_regen = 0.1f;
+    public float health_regen = 0.03f;
 
-
+    public float attack_speed = 0.35f;
 
     // Dash attributes
     private float startDashTime = 0.2f;
@@ -42,6 +42,7 @@ public class Clippy : MonoBehaviour
     public int dmgtaken=0;
     private bool cantakedmg=true;
     private int damage_value;
+
 
 
     // Shooting attributes
@@ -62,7 +63,6 @@ public class Clippy : MonoBehaviour
         gm = gam.GetComponent<GameMaster>();
         lm = gm.GetComponent<LeaderboardManager>();
         rb = GetComponent<Rigidbody2D>();
-        speed = 6f; // Set initial speed
         staminaprogressUI = GameObject.FindWithTag("staminabar");
         healthprogressUI = GameObject.FindWithTag("healbar");
         staminaImage = staminaprogressUI.GetComponent<Image>();
@@ -202,17 +202,6 @@ public class Clippy : MonoBehaviour
 
         rb.linearVelocity = new Vector2(dirX * speed, dirY * speed); // Set movement velocity
 
-        //sprint
-        if (Input.GetKey(KeyCode.LeftShift) && player_stamina>0f)
-        {
-            speed=10;
-            is_sprinting=true;
-        }
-        else
-        {
-            speed=6;
-            is_sprinting=false;
-        }
     }
 
     private IEnumerator ShootFireball()
@@ -240,7 +229,7 @@ public class Clippy : MonoBehaviour
                 Destroy(arrow_fired, 5f);
 
                 // Wait for 0.5 seconds before shooting again
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(attack_speed);
             }
             yield return new WaitForSeconds(0f);  
         }

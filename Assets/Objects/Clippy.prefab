@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_stamina: 100
   player_health: 100
+  attack_speed: 0.35
   is_sprinting: 0
   rollcounter: 0
   dmgtaken: 0

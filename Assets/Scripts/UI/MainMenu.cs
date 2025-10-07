@@ -18,6 +18,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("SettingsMenu");
     }
 
+    public void goToHighScoreMenu()
+    {
+        SceneManager.LoadScene("HighScoresMenu");
+    }
+
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");

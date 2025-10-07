@@ -10,6 +10,7 @@ public class GameMaster : MonoBehaviour
 {
     public GameObject clippy;
     public Transform clippySpawn;
+    private GameObject cliSpawn;
     // spawning logic
     public List<GameObject> enemies_to_spawn;
     public int spawn_count = 4;
@@ -19,6 +20,7 @@ public class GameMaster : MonoBehaviour
     private List<Vector3> spawns = new List<Vector3>();
 
     public int scoreCounter = 0;
+    public int upgradeScore = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreTextGO;
     public int highScore = 0;
@@ -26,6 +28,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] public TMP_InputField _usernameInputField;
     [SerializeField] private LeaderboardManager lm;
     public GameObject gameOver;
+    public GameObject upgrade;
 
     public GameObject panel;
 
@@ -39,8 +42,12 @@ public class GameMaster : MonoBehaviour
         gameOver = GameObject.FindWithTag("gameoverUI");
         gameOver.SetActive(false);
 
-        //Spawn player
-        GameObject cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
+        upgrade = GameObject.FindWithTag("upgrademenu");
+        upgrade.SetActive(false);
+
+
+        
+        cliSpawn = (GameObject)Instantiate(clippy, clippySpawn.position, Quaternion.identity);
 
         //spawning enemies
         generate_spawns();
@@ -62,13 +69,21 @@ public class GameMaster : MonoBehaviour
         PlayerPrefs.SetString("Name", playerName);
         PlayerPrefs.Save();
         Time.timeScale = 1f;
+        
 
     }
 
     void Update()
     {
         scoreText.text = scoreCounter.ToString();
-        scoreTextGO.text = scoreCounter.ToString();
+        scoreTextGO.text = PlayerPrefs.GetString("Name");
+
+        if(upgradeScore>500)
+        {
+            Time.timeScale = 0f;
+            upgrade.SetActive(true);
+            upgradeScore=0;
+        }
     }
 
     private IEnumerator SpawnEnemiesInterval()
@@ -87,6 +102,12 @@ public class GameMaster : MonoBehaviour
             yield return new WaitForSeconds(spawn_wait_for);
             spawn_wait_for = Mathf.Max(0.25f, spawn_wait_for - 0.001f);
         }
+    }
+
+
+    public void resume_game()
+    {
+        Time.timeScale = 1f;
     }
 
     private void generate_spawns()
@@ -133,6 +154,51 @@ public class GameMaster : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         highScore = PlayerPrefs.GetInt("highScore", highScore);
+        Time.timeScale = 1f;
+    }
+
+
+    public void UpgradeHealth()
+    {
+        cliSpawn = GameObject.FindWithTag("Player");
+        Clippy clippyScript = cliSpawn.GetComponent<Clippy>();
+        clippyScript.max_health = clippyScript.max_health + 15; 
+        clippyScript.player_health = clippyScript.player_health + 15; 
+        resume();
+    }
+
+    public void UpgradeSpeed()
+    {
+        cliSpawn = GameObject.FindWithTag("Player");
+        Clippy clippyScript = cliSpawn.GetComponent<Clippy>();
+        clippyScript.speed = clippyScript.speed + 1f ; 
+        resume();
+    }
+
+    public void UpgradeAttackSpeed()
+    {
+        cliSpawn = GameObject.FindWithTag("Player");
+        Clippy clippyScript = cliSpawn.GetComponent<Clippy>();
+        if(clippyScript.attack_speed > 0.05f)
+        {
+            clippyScript.attack_speed = clippyScript.attack_speed - 0.05f ; 
+        }
+        resume();
+    }
+
+    public void UpgradeHealthRegen()
+    {
+        cliSpawn = GameObject.FindWithTag("Player");
+        Clippy clippyScript = cliSpawn.GetComponent<Clippy>();
+        clippyScript.health_regen = clippyScript.health_regen + 0.05f ; 
+        resume();
+    
+    }
+
+    private void resume()
+    {
+        upgrade = GameObject.FindWithTag("upgrademenu");
+        upgrade.SetActive(false);
         Time.timeScale = 1f;
     }
     

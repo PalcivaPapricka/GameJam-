@@ -15,6 +15,7 @@ public class health_pickup : MonoBehaviour
     {
         // Find the player GameObject by tag
         player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(gameObject, 6f);
 
     }
 
@@ -42,7 +43,7 @@ public class health_pickup : MonoBehaviour
                 // Increase player's health
                 if (actualhealth < 90)
                 {
-                    player.GetComponent<Clippy>().player_health += 10;
+                    player.GetComponent<Clippy>().player_health += 3;
                 }
                 else
                 {

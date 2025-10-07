@@ -322,6 +322,7 @@ public class EnemyControll : MonoBehaviour
         Destroy(gameObject, 0.5f);
         audioSource.Play();
         gm.GetComponent<GameMaster>().scoreCounter += score;
+        gm.GetComponent<GameMaster>().upgradeScore += score;
     }
 
 

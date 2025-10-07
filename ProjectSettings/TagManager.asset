@@ -17,6 +17,7 @@ TagManager:
   - malware
   - health_pickup
   - hint
+  - upgrademenu
   layers:
   - Default
   - TransparentFX
